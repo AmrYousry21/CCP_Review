@@ -1,0 +1,1039 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CCP-C Review</title>
+<meta name="description" content="Critical Care Paramedic (CCP-C) review: topic questions with explanations, flashcards, and two 100-question mock exams with topic analysis.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f3f4f8;--surface:#ffffff;--surface2:#eef0f6;--ink:#131726;--muted:#5a6276;--line:#dde1ea;
+  --accent:#c8102e;--accent-soft:#fbe8eb;
+  --ok:#0d7f57;--ok-bg:#e1f4ea;--bad:#c22d2d;--bad-bg:#fbe6e6;--warn:#a5650b;--warn-bg:#fdf1dc;
+  --sel:#1d4ed8;--sel-bg:#e7eefd;
+  --hdr:#111527;--hdr-ink:#f4f6fb;--hdr-muted:#a3abc2;
+  --shadow:0 1px 2px rgba(16,24,40,.05),0 6px 20px rgba(16,24,40,.06);
+  --r:14px;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0c0f18;--surface:#151a27;--surface2:#1c2233;--ink:#e7eaf2;--muted:#9aa2b7;--line:#283046;
+    --accent:#ff4f61;--accent-soft:#3a1820;
+    --ok:#3fcf93;--ok-bg:#11352a;--bad:#ff6f6f;--bad-bg:#3b1a1e;--warn:#f3b552;--warn-bg:#382a12;
+    --sel:#7ea4ff;--sel-bg:#1b2a4f;--hdr:#0a0d16;--shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.25);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0c0f18;--surface:#151a27;--surface2:#1c2233;--ink:#e7eaf2;--muted:#9aa2b7;--line:#283046;
+  --accent:#ff4f61;--accent-soft:#3a1820;
+  --ok:#3fcf93;--ok-bg:#11352a;--bad:#ff6f6f;--bad-bg:#3b1a1e;--warn:#f3b552;--warn-bg:#382a12;
+  --sel:#7ea4ff;--sel-bg:#1b2a4f;--hdr:#0a0d16;--shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.25);
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:16px/1.55 Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:Archivo,Inter,sans-serif;letter-spacing:-.01em;margin:0}
+button{font:inherit;color:inherit;cursor:pointer}
+.wrap{max-width:920px;margin:0 auto;padding:0 16px}
+/* header */
+.top{background:var(--hdr);color:var(--hdr-ink);position:sticky;top:0;z-index:20}
+.top-in{display:flex;align-items:center;justify-content:space-between;padding-top:14px;padding-bottom:10px;gap:12px}
+.brand{display:flex;align-items:center;gap:12px;min-width:0}
+.brand svg{flex:none}
+.brand b{display:block;font-family:Archivo,sans-serif;font-size:20px;font-weight:800;letter-spacing:.01em}
+.brand span{display:block;color:var(--hdr-muted);font-size:13px}
+.iconbtn{background:transparent;border:1px solid rgba(255,255,255,.18);color:var(--hdr-ink);border-radius:10px;width:38px;height:38px;display:grid;place-items:center}
+.tabs{display:flex;gap:4px;padding-bottom:0;overflow-x:auto}
+.tab{background:none;border:0;color:var(--hdr-muted);padding:10px 14px 12px;font-weight:600;font-size:15px;border-bottom:3px solid transparent;white-space:nowrap}
+.tab.on{color:var(--hdr-ink);border-bottom-color:var(--accent)}
+main.wrap{padding-top:24px;padding-bottom:48px;min-height:70vh}
+/* generic */
+.lead{color:var(--muted);margin:6px 0 18px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow)}
+.pad{padding:20px}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.spread{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.btn{border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:10px 16px;font-weight:600;font-size:15px}
+.btn:hover{border-color:var(--muted)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn.primary:hover{filter:brightness(1.07)}
+.btn.ghost{background:transparent}
+.btn:disabled{opacity:.45;cursor:default}
+.btn.sm{padding:6px 12px;font-size:14px}
+.muted{color:var(--muted)}
+.small{font-size:13px}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:4px 9px;border-radius:999px;background:var(--surface2);color:var(--muted)}
+.chip.ok{background:var(--ok-bg);color:var(--ok)}
+.chip.bad{background:var(--bad-bg);color:var(--bad)}
+.chip.warn{background:var(--warn-bg);color:var(--warn)}
+.chip.acc{background:var(--accent-soft);color:var(--accent)}
+.switch{display:inline-flex;align-items:center;gap:8px;font-size:14px;color:var(--muted);cursor:pointer;user-select:none}
+.switch input{width:18px;height:18px;accent-color:var(--accent)}
+/* topic grid */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.topic{text-align:left;padding:16px;display:flex;flex-direction:column;gap:10px;min-height:118px;transition:transform .12s,border-color .12s}
+.topic:hover{border-color:var(--accent);transform:translateY(-1px)}
+.topic h3{font-size:16px;line-height:1.3}
+.topic .meta{display:flex;justify-content:space-between;align-items:center;margin-top:auto;font-size:13px;color:var(--muted)}
+.topic .num{font-family:Archivo,sans-serif;font-weight:800;color:var(--accent);font-size:13px;letter-spacing:.06em}
+.topic.mixed{background:linear-gradient(135deg,var(--accent-soft),var(--surface))}
+/* question card */
+.qhead{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.progress{height:6px;background:var(--surface2);border-radius:999px;overflow:hidden;margin-bottom:18px}
+.progress i{display:block;height:100%;background:var(--accent);border-radius:999px;transition:width .25s}
+.stem{font-size:19px;font-weight:600;line-height:1.45;margin:4px 0 18px}
+.opts{display:flex;flex-direction:column;gap:10px}
+.opt{display:flex;align-items:flex-start;gap:12px;text-align:left;width:100%;padding:13px 14px;border:1.5px solid var(--line);border-radius:12px;background:var(--surface);font-size:16px;line-height:1.4;transition:border-color .12s,background .12s}
+.opt:hover:not(:disabled){border-color:var(--sel)}
+.opt .ltr{flex:none;width:28px;height:28px;border-radius:8px;display:grid;place-items:center;background:var(--surface2);font-weight:700;font-size:14px}
+.opt>span:nth-child(2){flex:1;padding-top:3px}
+.opt .tag{flex:none;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;padding:4px 8px;border-radius:999px;align-self:center}
+.opt.sel{border-color:var(--sel);background:var(--sel-bg)}
+.opt.sel .ltr{background:var(--sel);color:#fff}
+.opt.ok{border-color:var(--ok);background:var(--ok-bg)}
+.opt.ok .ltr{background:var(--ok);color:#fff}
+.opt.ok .tag{background:var(--ok);color:#fff}
+.opt.bad{border-color:var(--bad);background:var(--bad-bg)}
+.opt.bad .ltr{background:var(--bad);color:#fff}
+.opt.bad .tag{background:var(--bad);color:#fff}
+.opt.dim{opacity:.6}
+.opt:disabled{cursor:default}
+.explain{margin-top:16px;padding:14px 16px;border-radius:12px;background:var(--surface2);border-left:4px solid var(--ok)}
+.explain.wrong{border-left-color:var(--bad)}
+.explain b{display:block;margin-bottom:4px}
+.navrow{display:flex;justify-content:space-between;gap:10px;margin-top:20px}
+/* flashcards */
+.fcwrap{perspective:1400px;margin:16px 0}
+.fc{position:relative;height:300px;cursor:pointer;outline:none}
+.fc-in{position:absolute;inset:0;transition:transform .5s cubic-bezier(.2,.7,.2,1);transform-style:preserve-3d}
+.fc.flipped .fc-in{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:18px;border:1px solid var(--line);background:var(--surface);box-shadow:var(--shadow);padding:24px;display:flex;flex-direction:column;overflow:auto}
+.face .lbl span:last-child{white-space:nowrap}
+.face .lbl{gap:12px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);display:flex;justify-content:space-between}
+.face .txt{margin:auto 0;text-align:center;padding:12px 0}
+.front .txt{font-family:Archivo,sans-serif;font-size:26px;font-weight:700;line-height:1.25}
+.back{transform:rotateY(180deg);background:var(--surface);border-top:5px solid var(--accent)}
+.back .txt{font-size:18px;line-height:1.55;text-align:left}
+.hint{text-align:center;color:var(--muted);font-size:13px}
+.chips{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;margin-bottom:6px}
+.pill{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:7px 13px;font-size:14px;font-weight:600;white-space:nowrap}
+.pill.on{background:var(--ink);color:var(--surface);border-color:var(--ink)}
+.known-btn.on{background:var(--ok-bg);border-color:var(--ok);color:var(--ok)}
+/* tests */
+.tests{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.tcard h2{font-size:22px}
+.stats{display:flex;gap:22px;margin:14px 0}
+.stat b{display:block;font-family:Archivo,sans-serif;font-size:24px}
+.stat span{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;font-weight:600}
+.exbar{position:sticky;top:calc(var(--hh,124px) + 8px);z-index:10;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin-bottom:14px;box-shadow:var(--shadow)}
+.timer{font-variant-numeric:tabular-nums;font-weight:700;font-family:Archivo,sans-serif;font-size:18px}
+.timer.low{color:var(--bad)}
+.navgrid{display:grid;grid-template-columns:repeat(10,1fr);gap:6px;margin:12px 0 4px}
+.navgrid button{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:6px 0;font-size:13px;font-weight:600;position:relative}
+.navgrid button.ans{background:var(--sel-bg);border-color:var(--sel);color:var(--sel)}
+.navgrid button.cur{outline:2px solid var(--accent);outline-offset:1px}
+.navgrid button.flag::after{content:"";position:absolute;top:3px;right:3px;width:7px;height:7px;border-radius:50%;background:var(--warn)}
+.flagbtn.on{background:var(--warn-bg);border-color:var(--warn);color:var(--warn)}
+.confirm{border:2px solid var(--accent);margin-bottom:14px}
+/* results */
+.hero{display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:center}
+.ring{--p:0;width:132px;height:132px;border-radius:50%;background:conic-gradient(var(--rc) calc(var(--p)*1%),var(--surface2) 0);display:grid;place-items:center}
+.ring>div{width:104px;height:104px;border-radius:50%;background:var(--surface);display:grid;place-items:center;text-align:center}
+.ring b{font-family:Archivo,sans-serif;font-size:30px;line-height:1}
+.ring span{font-size:12px;color:var(--muted)}
+.bars{display:flex;flex-direction:column;gap:12px;margin-top:8px}
+.bar{display:grid;grid-template-columns:minmax(150px,240px) 1fr 104px;gap:12px;align-items:center}
+.bar .name{font-size:14px;font-weight:600;line-height:1.3}
+.bar .track{height:12px;background:var(--surface2);border-radius:999px;overflow:hidden}
+.bar .track i{display:block;height:100%;border-radius:999px}
+.bar .val{white-space:nowrap;text-align:right;font-variant-numeric:tabular-nums;font-size:14px;font-weight:700}
+.fill-ok{background:var(--ok)}.fill-warn{background:var(--warn)}.fill-bad{background:var(--bad)}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:13px;color:var(--muted);margin-top:14px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.focus{border-left:4px solid var(--bad)}
+.focus-item{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 0;border-top:1px solid var(--line);flex-wrap:wrap}
+.focus-item:first-of-type{border-top:0}
+.ritem{padding:16px 0;border-top:1px solid var(--line)}
+.ritem .q{font-weight:600;margin:6px 0 10px}
+.ans-line{font-size:15px;margin:3px 0;display:flex;gap:8px}
+.ans-line .k{flex:none;font-weight:700;width:96px;color:var(--muted);font-size:13px;text-transform:uppercase;letter-spacing:.04em;padding-top:2px}
+.ans-line.good .v{color:var(--ok);font-weight:600}
+.ans-line.wrongv .v{color:var(--bad);font-weight:600;text-decoration:line-through;text-decoration-thickness:1px}
+.ritem .why{font-size:15px;color:var(--muted);margin-top:8px}
+section+section{margin-top:18px}
+.sec-h{font-size:18px;margin-bottom:12px}
+footer{border-top:1px solid var(--line);color:var(--muted);font-size:13px;padding:20px 0 40px}
+@media (max-width:640px){
+  .stem{font-size:17px}
+  .hero{grid-template-columns:1fr;justify-items:center;text-align:center}
+  .bar{grid-template-columns:1fr auto}
+  .bar .name{grid-column:1/-1}
+  .navgrid{grid-template-columns:repeat(8,1fr)}
+  .front .txt{font-size:22px}
+  .back .txt{font-size:16px}
+  .fc{height:320px}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap top-in">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#c8102e"/><path d="M5 22h7l3-8 5 15 4-11 2 4h9" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div><b>CCP-C Review</b><span>Critical Care Paramedic exam prep</span></div>
+    </div>
+    <button class="iconbtn" id="themeBtn" aria-label="Toggle light or dark theme" title="Toggle theme">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor"/></svg>
+    </button>
+  </div>
+  <nav class="wrap tabs" role="tablist">
+    <button class="tab" data-tab="review" role="tab">Review</button>
+    <button class="tab" data-tab="flash" role="tab">Flashcards</button>
+    <button class="tab" data-tab="tests" role="tab">Mock Tests</button>
+  </nav>
+</header>
+<main class="wrap" id="view"></main>
+<footer>
+  <div class="wrap">
+    Independent study aid organized around the IBSC CCP-C content areas, intended for use alongside <i>Advanced Concepts in Critical Care</i> (FlightBridgeED). Questions and flashcards are original and are not reproduced from the book. Not affiliated with or endorsed by FlightBridgeED or the IBSC. Always follow your local protocols and medical direction.
+  </div>
+</footer>
+<script>
+// Question format: t = topic id, s = set ("r" review, "1" mock test 1, "2" mock test 2)
+// o[0] is ALWAYS the correct answer; options are shuffled when displayed.
+window.QB = window.QB || [];
+QB.push(
+// ===== TRANSPORT, SAFETY & FLIGHT PHYSIOLOGY =====
+{t:"transport",s:"r",q:"As an aircraft climbs and ambient pressure falls, what happens to the volume of air trapped in an ETT cuff?",o:["It expands","It contracts","It stays the same","It dissolves into the saline"],e:"Boyle's law (P1V1 = P2V2): at constant temperature, gas volume is inversely proportional to pressure. Trapped gas in ETT cuffs, pneumothoraces, bowel and air splints expands on ascent."},
+{t:"transport",s:"r",q:"Which gas law explains why the partial pressure of oxygen falls at altitude even though air is still 21% oxygen?",o:["Dalton's law","Henry's law","Charles' law","Graham's law"],e:"Dalton's law: total pressure equals the sum of partial pressures. As barometric pressure falls, the PO2 (21% of a smaller total) falls, causing hypoxic hypoxia."},
+{t:"transport",s:"r",q:"Decompression sickness is best explained by which gas law?",o:["Henry's law","Boyle's law","Dalton's law","Gay-Lussac's law"],e:"Henry's law: the amount of gas dissolved in a liquid is proportional to the partial pressure above it. Rapid pressure drop lets dissolved nitrogen come out of solution as bubbles."},
+{t:"transport",s:"r",q:"An oxygen cylinder stored in a cold vehicle overnight shows a lower gauge pressure. Which law explains this?",o:["Gay-Lussac's law","Boyle's law","Henry's law","Dalton's law"],e:"Gay-Lussac's law: at constant volume, gas pressure is directly proportional to absolute temperature. Colder cylinder = lower pressure."},
+{t:"transport",s:"r",q:"During the indifferent stage of hypoxia, which change is typically noticed first?",o:["Decreased night vision","Cyanosis","Loss of consciousness","Severe tachycardia"],e:"Night vision is very sensitive to hypoxia and begins to decline at relatively low altitudes (around 5,000 ft) before other symptoms appear."},
+{t:"transport",s:"r",q:"What is the safest way to approach a running helicopter with a main rotor?",o:["From the front, within the pilot's view, after the pilot or crew signals","From the rear, to stay away from the cockpit","From the uphill side on sloped ground","Upright and quickly, from any side"],e:"Approach only when signaled, from the front (roughly 10 to 2 o'clock) in the pilot's view, crouched. Never approach from the rear (tail rotor) or the uphill side (rotor disc is lower)."},
+{t:"transport",s:"1",q:"A patient with carbon monoxide poisoning has which type of hypoxia?",o:["Hypemic (anemic) hypoxia","Histotoxic hypoxia","Stagnant hypoxia","Hypoxic hypoxia"],e:"Hypemic hypoxia is reduced oxygen-carrying capacity of the blood. CO binds hemoglobin about 200-250 times more avidly than O2, so carrying capacity drops."},
+{t:"transport",s:"1",q:"Hypoxia caused by reduced cardiac output or pooling of blood (as with G-forces or shock) is called:",o:["Stagnant hypoxia","Hypemic hypoxia","Histotoxic hypoxia","Hypoxic hypoxia"],e:"Stagnant (circulatory) hypoxia is inadequate blood flow to tissues even when arterial oxygen content is normal."},
+{t:"transport",s:"1",q:"What is the generally recommended ETT cuff pressure, especially important to monitor during altitude changes?",o:["20-30 cm H2O","5-10 cm H2O","40-50 cm H2O","60-80 cm H2O"],e:"20-30 cm H2O seals the airway while limiting tracheal mucosal ischemia. Cuff pressure rises on ascent and falls on descent, so recheck with a manometer (or fill with saline)."},
+{t:"transport",s:"1",q:"At sea level (760 mmHg) breathing room air, the inspired PO2 after humidification is approximately:",o:["150 mmHg","160 mmHg","100 mmHg","713 mmHg"],e:"PiO2 = (Pb - PH2O) x FiO2 = (760 - 47) x 0.21 = about 150 mmHg. Water vapor pressure (47 mmHg) is constant regardless of altitude."},
+{t:"transport",s:"1",q:"Barotitis media (ear block) most commonly occurs during:",o:["Descent","Ascent","Level cruise flight","Engine start"],e:"On ascent, expanding middle-ear gas vents easily through the eustachian tube. On descent, the tube must open to let air back in; congestion prevents this. Awake patients should swallow, yawn or perform Valsalva."},
+{t:"transport",s:"1",q:"The dry air at altitude most directly contributes to which patient problem?",o:["Dehydration and thickened secretions","Hypercalcemia","Bradycardia","Hypoglycemia"],e:"Humidity falls with altitude and with cabin air systems. This dries mucous membranes, thickens secretions and adds insensible fluid loss. Humidify O2 and monitor hydration."},
+{t:"transport",s:"1",q:"A patient with a small, untreated pneumothorax needs fixed-wing transport. The best plan is to:",o:["Place a chest tube before departure (or fly with a sea-level cabin)","Fly at maximum altitude to shorten flight time","Withhold oxygen to avoid absorption","Apply an occlusive dressing only"],e:"Per Boyle's law the pneumothorax will expand with decreasing cabin pressure and may become a tension pneumothorax. Decompress before flight or keep the cabin pressurized to sea level."},
+{t:"transport",s:"2",q:"Cyanide poisoning produces which type of hypoxia?",o:["Histotoxic hypoxia","Hypemic hypoxia","Stagnant hypoxia","Hypoxic hypoxia"],e:"Histotoxic hypoxia means cells cannot use delivered oxygen. Cyanide inhibits cytochrome c oxidase, halting aerobic metabolism."},
+{t:"transport",s:"2",q:"Pressurized fixed-wing aircraft typically maintain a cabin altitude of:",o:["8,000 ft or lower","Sea level at all times","12,000-14,000 ft","18,000 ft"],e:"Most pressurized aircraft keep cabin altitude at or below about 8,000 ft. Some patients (e.g., pneumothorax, DCS) need a sea-level cabin, which may require flying lower."},
+{t:"transport",s:"2",q:"After a rapid cabin decompression, what is the first action for the medical crew?",o:["Don their own oxygen masks","Reassess the patient's airway","Check the ETT cuff pressure","Call medical control"],e:"Time of useful consciousness can be very short. Crew members must secure their own oxygen first so they can then care for the patient."},
+{t:"transport",s:"2",q:"A balloon in a warming room gets larger. Which gas law describes this?",o:["Charles' law","Boyle's law","Henry's law","Dalton's law"],e:"Charles' law: at constant pressure, gas volume is directly proportional to absolute temperature."},
+{t:"transport",s:"2",q:"Which single action most reduces the risk of crew injury in a ground ambulance collision?",o:["Wearing a seat belt/restraint in the patient compartment whenever possible","Driving with lights and sirens","Keeping the side door unlocked","Standing to reach equipment"],e:"Unrestrained providers in the patient compartment have the highest injury risk. Stay belted and organize equipment so it can be reached while seated."},
+{t:"transport",s:"2",q:"Why are HEMS pilots often not given patient details when accepting a flight request?",o:["To keep patient acuity from pressuring the weather/safety decision","Because of HIPAA restrictions on pilots","Because pilots cannot use the radio","To shorten the dispatch call"],e:"Keeping the pilot 'blind' to patient details prevents mission pressure from influencing the go/no-go decision. Any crew member can turn down a flight ('three to go, one to say no')."},
+{t:"transport",s:"2",q:"Which transport approach is best for a diver with suspected decompression sickness?",o:["100% oxygen and the lowest safe altitude or a sea-level cabin","Fly at high altitude to speed transport","Room air to prevent oxygen toxicity","Sitting upright with a tight abdominal binder"],e:"Lower altitude prevents further bubble expansion; 100% O2 speeds nitrogen washout. Transport toward a hyperbaric facility."},
+
+// ===== AIRWAY, RSI & ANALGESIA/SEDATION =====
+{t:"airway",s:"r",q:"Succinylcholine should be avoided in which patient?",o:["A burn patient injured 5 days ago","A trauma patient injured 30 minutes ago","An adult with asthma","A patient with a simple forearm fracture"],e:"After about 24-72 hours, burns, crush injury, denervation and prolonged immobility upregulate acetylcholine receptors, risking life-threatening hyperkalemia with succinylcholine."},
+{t:"airway",s:"r",q:"The usual adult RSI dose of succinylcholine is:",o:["1.5 mg/kg IV","0.15 mg/kg IV","5 mg/kg IV","0.6 mg/kg IV"],e:"1.5 mg/kg IV (some use up to 2 mg/kg). Underdosing is a more common error than overdosing because of its wide safety margin."},
+{t:"airway",s:"r",q:"The usual RSI dose of rocuronium is:",o:["1.0-1.2 mg/kg IV","0.1 mg/kg IV","0.3 mg/kg IV","3 mg/kg IV"],e:"At 1.0-1.2 mg/kg, rocuronium achieves intubating conditions in about 45-60 seconds. Duration is roughly 45-70+ minutes, so post-intubation sedation is essential."},
+{t:"airway",s:"r",q:"For a hypotensive trauma patient needing RSI, which induction agent is generally preferred (at a reduced dose)?",o:["Ketamine","Propofol","Midazolam 0.3 mg/kg","Thiopental"],e:"Ketamine releases catecholamines and tends to preserve blood pressure. In profound shock the dose should still be reduced, since catecholamine-depleted patients can drop pressure."},
+{t:"airway",s:"r",q:"What is the most reliable method to confirm and continuously monitor ETT placement?",o:["Continuous waveform capnography","Auscultation of breath sounds","Fogging in the tube","Chest rise"],e:"A persistent, normal ETCO2 waveform confirms tracheal placement and alerts you instantly to dislodgement. Clinical signs alone are unreliable, especially in noisy transport."},
+{t:"airway",s:"r",q:"What is often the earliest sign of malignant hyperthermia after succinylcholine?",o:["Unexplained rise in ETCO2","High fever","Hypokalemia","Bradycardia"],e:"Hypermetabolism causes a rapid rise in ETCO2 and tachycardia, with masseter rigidity. Hyperthermia is often a later sign. Treat with dantrolene 2.5 mg/kg IV."},
+{t:"airway",s:"1",q:"A known side effect of etomidate is:",o:["Transient adrenal suppression","Severe hypertension","Bronchospasm","Hyperkalemia"],e:"Etomidate (0.3 mg/kg) inhibits 11-beta-hydroxylase, transiently suppressing cortisol production. It is otherwise hemodynamically stable. Myoclonus is also common."},
+{t:"airway",s:"1",q:"The main reason for post-intubation hypotension is:",o:["Positive-pressure ventilation reducing venous return plus loss of sympathetic drive","Allergic reaction to the ETT","Hyperkalemia from the paralytic","Excess oxygen"],e:"Positive intrathoracic pressure reduces preload, and induction agents blunt the patient's catecholamine surge. Resuscitate before intubation when possible."},
+{t:"airway",s:"1",q:"An intubated patient suddenly desaturates. In the DOPE mnemonic, 'P' stands for:",o:["Pneumothorax","Paralysis","PEEP","Perfusion"],e:"DOPE: Displacement, Obstruction, Pneumothorax, Equipment failure. Many add 'S' for stacked breaths (auto-PEEP)."},
+{t:"airway",s:"1",q:"The landmark for a surgical cricothyrotomy is the membrane between the:",o:["Thyroid cartilage and cricoid cartilage","Hyoid bone and thyroid cartilage","Cricoid cartilage and first tracheal ring","Second and third tracheal rings"],e:"The cricothyroid membrane lies between the inferior border of the thyroid cartilage and the superior border of the cricoid cartilage."},
+{t:"airway",s:"1",q:"In a child under roughly 10-12 years, the preferred emergency surgical airway is:",o:["Needle cricothyrotomy","Open surgical cricothyrotomy","Tracheostomy with a scalpel","Nasotracheal intubation"],e:"Young children have a small, pliable cricothyroid membrane and the cricoid is the narrowest support structure. Needle cricothyrotomy with jet or bag ventilation is preferred."},
+{t:"airway",s:"1",q:"Apneic oxygenation during laryngoscopy is typically provided by:",o:["Nasal cannula at 15 L/min or more","A non-rebreather at 2 L/min","BVM at 30 breaths/min","Venturi mask at 24%"],e:"High-flow nasal cannula left in place during the apneic period continues passive oxygen delivery and can extend safe apnea time."},
+{t:"airway",s:"1",q:"Adequate preoxygenation before RSI is achieved by:",o:["3 minutes of tidal breathing at high FiO2, or 8 vital-capacity breaths","30 seconds of room air","One deep breath of oxygen","Bag-valve ventilation at 30/min for 1 minute"],e:"Three minutes of tidal breathing (or 8 maximal breaths) at maximal FiO2 replaces nitrogen in the functional residual capacity with oxygen."},
+{t:"airway",s:"1",q:"Rapid administration of a large fentanyl dose can cause:",o:["Chest wall rigidity","Severe hypertension","Hyperkalemia","Malignant hyperthermia"],e:"'Wooden chest' can make ventilation difficult. Give fentanyl slowly; treatment includes naloxone or neuromuscular blockade."},
+{t:"airway",s:"1",q:"Which is a recognized adverse effect of ketamine?",o:["Emergence reactions","Profound bradycardia","Adrenal suppression","Hyperkalemia"],e:"Ketamine can cause emergence phenomena, hypersalivation, hypertension/tachycardia and, rarely, laryngospasm."},
+{t:"airway",s:"1",q:"Sugammadex reverses which neuromuscular blocking agents?",o:["Rocuronium and vecuronium","Succinylcholine","All opioids","Benzodiazepines"],e:"Sugammadex encapsulates aminosteroid NMBAs (rocuronium, vecuronium). It has no effect on succinylcholine."},
+{t:"airway",s:"1",q:"The most common adverse effect of a propofol bolus is:",o:["Hypotension","Hypertension","Hyperglycemia","Tachypnea"],e:"Propofol causes vasodilation and myocardial depression, so it should be used cautiously or at reduced doses in shock."},
+{t:"airway",s:"1",q:"In the LEMON airway assessment, the '3-3-2 rule' evaluates:",o:["Mouth opening, mandible length and thyroid-to-hyoid distance","Respiratory rate, SpO2 and ETCO2","Mallampati score","Neck circumference"],e:"3 fingers mouth opening, 3 fingers hyoid-to-chin, 2 fingers hyoid-to-thyroid. Shorter distances predict difficult laryngoscopy."},
+{t:"airway",s:"2",q:"The RSI dose of vecuronium is about:",o:["0.1-0.15 mg/kg IV","1.5 mg/kg IV","0.01 mg/kg IV","1 mg/kg IV"],e:"Vecuronium 0.1-0.15 mg/kg has a slower onset than rocuronium; it is more often used for maintenance paralysis."},
+{t:"airway",s:"2",q:"In a healthy patient, succinylcholine typically raises serum potassium by about:",o:["0.5 mEq/L","2 mEq/L","3 mEq/L","It lowers potassium"],e:"A rise of about 0.5 mEq/L is expected. Patients with receptor upregulation (burns, crush, neuromuscular disease) can have dangerous rises."},
+{t:"airway",s:"2",q:"A risk of giving flumazenil to reverse midazolam is:",o:["Seizures, especially in chronic benzodiazepine users","Hypertensive crisis","Malignant hyperthermia","Bronchospasm"],e:"Flumazenil can precipitate withdrawal seizures in benzodiazepine-dependent patients or those with co-ingestions (e.g., TCAs). It is rarely used in critical care."},
+{t:"airway",s:"2",q:"After RSI with rocuronium, the patient is tachycardic, hypertensive and tearing. This most likely indicates:",o:["Inadequate sedation and analgesia","Malignant hyperthermia","Right mainstem intubation","Hypovolemia"],e:"Paralysis hides movement but not sympathetic signs of awareness. Give sedation and analgesia promptly after a long-acting paralytic."},
+{t:"airway",s:"2",q:"A typical ETT depth at the teeth for an average adult male is about:",o:["23 cm","15 cm","30 cm","18 cm"],e:"About 23 cm for men and 21 cm for women at the teeth (roughly 3 x tube size). Confirm with capnography and imaging when available."},
+{t:"airway",s:"2",q:"Signs that a bougie has entered the trachea include:",o:["Tracheal 'clicks' and hold-up in a small bronchus","Easy passage past 50 cm","Gurgling sounds","Immediate rise in SpO2"],e:"The tip clicks over tracheal rings and stops ('hold-up') as it reaches smaller airways. In the esophagus it passes without resistance."},
+{t:"airway",s:"2",q:"In traumatic brain injury, which event during intubation is most strongly linked to worse outcomes?",o:["Hypoxia (SpO2 < 90%) or hypotension","Mild tachycardia","A second laryngoscopy attempt with good SpO2","ETCO2 of 38 mmHg"],e:"Even a single episode of hypoxia or hypotension worsens TBI mortality. Preoxygenate, resuscitate and avoid both."},
+{t:"airway",s:"2",q:"First-line management of laryngospasm includes:",o:["Jaw thrust with pressure at the laryngospasm notch and PPV with 100% O2","Immediate surgical airway","Atropine only","Flumazenil"],e:"Firm pressure behind the earlobe (Larson's point), jaw thrust and CPAP/PPV usually break the spasm. If not, give a small dose of succinylcholine."},
+{t:"airway",s:"2",q:"Dexmedetomidine is best described as:",o:["An alpha-2 agonist that sedates with minimal respiratory depression","A GABA agonist that causes apnea","An opioid antagonist","A depolarizing paralytic"],e:"Dexmedetomidine provides cooperative sedation without significant respiratory depression. Bradycardia and hypotension are the main side effects."},
+{t:"airway",s:"2",q:"Delayed sequence intubation uses ketamine primarily to:",o:["Allow adequate preoxygenation in an agitated, hypoxic patient","Paralyze the patient faster","Replace the need for a paralytic","Treat hyperkalemia"],e:"A dissociative dose lets the agitated patient tolerate NIV or high-flow oxygen for preoxygenation before the paralytic is given."},
+{t:"airway",s:"2",q:"A key limitation of a supraglottic airway (e.g., i-gel, King LT) is:",o:["It does not fully protect against aspiration","It cannot be used for ventilation","It requires paralysis","It is contraindicated in cardiac arrest"],e:"SGAs are effective rescue devices but are not a definitive airway. Aspiration protection is incomplete and high airway pressures may leak."},
+{t:"airway",s:"2",q:"A typical sub-dissociative (analgesic) dose of ketamine is:",o:["0.1-0.3 mg/kg IV","1-2 mg/kg IV","4-5 mg/kg IV","10 mg/kg IM"],e:"Low-dose ketamine provides analgesia with minimal dissociation. 1-2 mg/kg IV is the dissociative/induction dose."}
+);
+
+window.QB = window.QB || [];
+QB.push(
+// ===== RESPIRATORY & VENTILATOR MANAGEMENT =====
+{t:"vent",s:"r",q:"Lung-protective ventilation targets a tidal volume of:",o:["6-8 mL/kg of ideal (predicted) body weight","10-12 mL/kg of actual body weight","4 mL/kg of actual body weight","15 mL/kg of ideal body weight"],e:"6-8 mL/kg IBW (6 mL/kg in ARDS) reduces volutrauma. Always use ideal body weight from height and sex, not actual weight."},
+{t:"vent",s:"r",q:"The goal plateau pressure for lung-protective ventilation is:",o:["Less than 30 cm H2O","Less than 50 cm H2O","Greater than 35 cm H2O","Exactly equal to PEEP"],e:"Plateau pressure reflects alveolar pressure. Keeping it under 30 cm H2O limits barotrauma and ventilator-induced lung injury."},
+{t:"vent",s:"r",q:"Peak inspiratory pressure rises sharply but plateau pressure is unchanged. The most likely cause is:",o:["Increased airway resistance (bronchospasm, kinked tube, secretions)","Tension pneumothorax","ARDS worsening","Right mainstem intubation"],e:"A widened peak-plateau gap means a resistance problem in the airways or tube. If both peak and plateau rise, think compliance (pneumothorax, mainstem, ARDS, abdominal distension)."},
+{t:"vent",s:"r",q:"A ventilated patient's ABG is 7.28 / PaCO2 55 / HCO3 25. The best adjustment is to:",o:["Increase the respiratory rate","Increase FiO2","Increase PEEP","Decrease the respiratory rate"],e:"This is acute respiratory acidosis. CO2 removal depends on minute ventilation (RR x Vt). Increasing RR is usually preferred to keep Vt lung-protective."},
+{t:"vent",s:"r",q:"The two primary ventilator settings that improve oxygenation are:",o:["FiO2 and PEEP","Respiratory rate and tidal volume","I:E ratio and flow rate","Trigger sensitivity and pressure support"],e:"Oxygenation is controlled by FiO2 and mean airway pressure (mainly PEEP). Ventilation (CO2) is controlled by RR and tidal volume."},
+{t:"vent",s:"r",q:"An intubated asthmatic becomes suddenly hypotensive with very high pressures. After checking for pneumothorax, the immediate step is to:",o:["Disconnect from the ventilator briefly to allow full exhalation","Increase the respiratory rate","Increase PEEP to 15","Give a fluid bolus and increase tidal volume"],e:"Breath stacking (auto-PEEP) raises intrathoracic pressure and blocks venous return. Disconnect, let the trapped air out (with gentle chest compression), then use a lower rate and longer expiratory time."},
+{t:"vent",s:"1",q:"A patient's PaO2/FiO2 ratio is 90 on PEEP 10. By the Berlin definition, this ARDS is:",o:["Severe","Mild","Moderate","Not ARDS"],e:"Berlin: mild 200-300, moderate 100-200, severe 100 or less, all on PEEP of at least 5 cm H2O."},
+{t:"vent",s:"1",q:"For a 6-foot (72-inch) male, a tidal volume of 6 mL/kg IBW is approximately:",o:["470 mL","360 mL","600 mL","720 mL"],e:"Male IBW = 50 + 2.3 x (inches over 60) = 50 + 2.3 x 12 = about 77.6 kg. 77.6 x 6 = about 466 mL."},
+{t:"vent",s:"1",q:"In Assist-Control (volume) ventilation, when the patient triggers a breath above the set rate:",o:["The ventilator delivers the full set tidal volume","The patient receives only pressure support","The breath is ignored","A smaller tidal volume is delivered"],e:"AC delivers a full machine breath for every trigger. Rapid patient triggering can cause hyperventilation and auto-PEEP."},
+{t:"vent",s:"1",q:"In pressure-control ventilation, a sudden decrease in lung compliance will cause:",o:["Decreased delivered tidal volume","Increased peak pressure","Increased delivered tidal volume","No change in tidal volume"],e:"In pressure modes the pressure is fixed and the volume varies. Watch exhaled tidal volume and minute ventilation alarms."},
+{t:"vent",s:"1",q:"On the ventilator flow waveform, auto-PEEP is suggested when:",o:["Expiratory flow does not return to zero before the next breath","Inspiratory flow is square","Peak pressure is under 20","ETCO2 waveform is square"],e:"If exhalation is incomplete, the next breath starts on top of trapped air. Lower the rate, shorten inspiratory time or treat bronchospasm."},
+{t:"vent",s:"1",q:"Which shifts the oxyhemoglobin dissociation curve to the right (easier O2 unloading)?",o:["Acidosis, hyperthermia, hypercapnia and increased 2,3-DPG","Alkalosis and hypothermia","Carbon monoxide","Decreased 2,3-DPG"],e:"A right shift lowers hemoglobin's affinity for O2, releasing more to tissues. Alkalosis, hypothermia, low 2,3-DPG, CO and fetal hemoglobin shift it left."},
+{t:"vent",s:"1",q:"BiPAP is most clearly indicated for which patient?",o:["COPD exacerbation with hypercapnic respiratory failure who is awake and protecting the airway","Unresponsive patient vomiting","Patient with facial trauma and basilar skull fracture","Patient in cardiac arrest"],e:"NIPPV reduces intubation rates in hypercapnic COPD and cardiogenic pulmonary edema. It needs a cooperative patient with an intact airway."},
+{t:"vent",s:"1",q:"Interpret: pH 7.50, PaCO2 30, HCO3 23.",o:["Uncompensated respiratory alkalosis","Compensated metabolic acidosis","Uncompensated metabolic alkalosis","Mixed respiratory and metabolic acidosis"],e:"High pH with low PaCO2 is respiratory alkalosis. Bicarbonate is normal, so there is no metabolic compensation yet (acute)."},
+{t:"vent",s:"1",q:"A patient with massive PE has persistent hypotension. The indicated therapy (absent contraindications) is:",o:["Systemic thrombolytics","Aggressive fluid boluses of 4 L","Nitroglycerin infusion","High PEEP"],e:"Massive (high-risk) PE with shock is an indication for thrombolysis. Large fluid boluses can worsen RV failure; use cautious fluids and vasopressors such as norepinephrine."},
+{t:"vent",s:"1",q:"For a ventilated patient with severe obstructive disease, the I:E ratio should generally be:",o:["Lengthened, such as 1:4 or longer","Shortened to 1:1","Inverted to 2:1","Unchanged at 1:2"],e:"A longer expiratory time allows trapped gas to escape and reduces auto-PEEP."},
+{t:"vent",s:"2",q:"A ventilated trauma patient develops sudden high peak and plateau pressures, hypotension and absent breath sounds on one side. Next step:",o:["Needle decompression of the affected side","Increase PEEP","Suction the ETT and continue transport","Give a bronchodilator"],e:"Rising peak and plateau pressures with hemodynamic collapse and unilateral absent sounds indicate tension pneumothorax. Decompress immediately."},
+{t:"vent",s:"2",q:"A ventilator low-pressure alarm most likely indicates:",o:["Circuit disconnection or cuff leak","Bronchospasm","Patient biting the tube","Mucus plug"],e:"Low pressure means gas is escaping or not reaching the patient. High-pressure alarms suggest obstruction, biting, coughing or decreased compliance."},
+{t:"vent",s:"2",q:"A potential adverse effect of high PEEP is:",o:["Decreased venous return and hypotension","Hypoglycemia","Increased cardiac preload","Decreased intrathoracic pressure"],e:"PEEP raises intrathoracic pressure, reducing venous return and cardiac output. It may also increase ICP and barotrauma risk."},
+{t:"vent",s:"2",q:"Interpret: pH 7.36, PaCO2 60, HCO3 33.",o:["Compensated respiratory acidosis","Uncompensated metabolic alkalosis","Uncompensated respiratory acidosis","Compensated metabolic acidosis"],e:"pH is within normal (low side), PaCO2 is high (primary) and HCO3 is elevated to compensate, a classic chronic COPD pattern."},
+{t:"vent",s:"2",q:"A widened PaCO2-ETCO2 gradient is most consistent with:",o:["Increased dead space (e.g., PE or low cardiac output)","Hyperthermia","Normal lung function","Metabolic alkalosis"],e:"Normally PaCO2 is 2-5 mmHg above ETCO2. Ventilated but poorly perfused alveoli (PE, shock, high PEEP) widen the gap."},
+{t:"vent",s:"2",q:"In severe asthma, the adult magnesium sulfate dose is:",o:["2 g IV over about 20 minutes","10 g IV push","200 mg IV","4 g IM"],e:"Magnesium relaxes bronchial smooth muscle. Give slowly to avoid hypotension."},
+{t:"vent",s:"2",q:"Which statement about pressure support ventilation is true?",o:["It requires spontaneous patient effort and has no guaranteed backup rate","It delivers a fixed tidal volume","It is ideal for paralyzed patients","It controls the respiratory rate"],e:"PSV augments each spontaneous breath. An apneic or paralyzed patient will not be ventilated (unless apnea backup is set)."},
+{t:"vent",s:"2",q:"Driving pressure is calculated as:",o:["Plateau pressure minus PEEP","Peak pressure minus plateau pressure","PEEP minus plateau pressure","Peak pressure plus PEEP"],e:"Driving pressure (Pplat - PEEP) reflects lung stress. Values under about 15 cm H2O are associated with better ARDS outcomes."},
+{t:"vent",s:"2",q:"For most critically ill adults, a reasonable SpO2 target is about:",o:["92-96%","80-85%","100% at all times","85-88% for all patients"],e:"Both hypoxia and hyperoxia can be harmful. 88-92% is acceptable for chronic CO2 retainers."},
+{t:"vent",s:"2",q:"A ventilated patient has a minute ventilation of 6 L/min at a rate of 12. What is the tidal volume?",o:["500 mL","720 mL","72 mL","200 mL"],e:"Minute ventilation = RR x Vt. 6,000 mL / 12 = 500 mL."},
+
+// ===== CARDIAC (ECG, ACS, DEVICES) =====
+{t:"cardiac",s:"r",q:"ST elevation in II, III and aVF with hypotension after nitroglycerin suggests:",o:["Right ventricular involvement; give fluids and check V4R","Anterior STEMI; give more nitroglycerin","Pericarditis; give NSAIDs","Left bundle branch block"],e:"Inferior MI (often RCA) can involve the RV, which is preload dependent. Avoid nitrates, give fluid boluses and check right-sided leads (ST elevation in V4R)."},
+{t:"cardiac",s:"r",q:"Correct intra-aortic balloon pump timing is:",o:["Inflate at the dicrotic notch, deflate just before systole","Inflate at the R wave, deflate at the T wave","Inflate during systole, deflate in diastole","Inflate at the P wave"],e:"Inflation at aortic valve closure (dicrotic notch) augments diastolic pressure. Deflation just before the aortic valve opens drops afterload."},
+{t:"cardiac",s:"r",q:"The two main hemodynamic benefits of an IABP are:",o:["Increased coronary perfusion and decreased afterload","Increased afterload and preload","Decreased coronary perfusion and increased contractility","Increased heart rate and SVR"],e:"Diastolic augmentation improves coronary perfusion; deflation lowers aortic end-diastolic pressure, reducing LV workload and myocardial O2 demand."},
+{t:"cardiac",s:"r",q:"The most reliable way to obtain blood pressure in a patient with a continuous-flow LVAD is:",o:["Doppler to obtain an approximate MAP","Palpating the radial pulse","Automated cuff systolic pressure","Capillary refill"],e:"Continuous-flow devices produce little pulsatility, so pulses may be absent. The Doppler opening pressure approximates MAP; goals are typically about 70-90 mmHg."},
+{t:"cardiac",s:"r",q:"Beck's triad for cardiac tamponade consists of:",o:["Hypotension, JVD and muffled heart sounds","Hypertension, bradycardia and irregular respirations","Tachycardia, fever and rash","Hypotension, tracheal deviation and absent breath sounds"],e:"Pulsus paradoxus (SBP drop over 10 mmHg on inspiration) and electrical alternans are also classic. Treat with pericardiocentesis."},
+{t:"cardiac",s:"r",q:"Deep, symmetric T-wave inversions or biphasic T waves in V2-V3 in a pain-free patient suggest:",o:["Wellens syndrome (critical proximal LAD stenosis)","Benign early repolarization","Hyperkalemia","Brugada syndrome"],e:"Wellens pattern indicates high risk of anterior MI. Avoid stress testing; these patients need catheterization."},
+{t:"cardiac",s:"1",q:"The first ECG sign of hyperkalemia is usually:",o:["Peaked T waves","U waves","Osborn waves","Delta waves"],e:"Progression: peaked T, PR prolongation/flattened P, QRS widening, sine wave, VF/asystole. Calcium stabilizes the myocardium first."},
+{t:"cardiac",s:"1",q:"ST depression in V1-V3 with tall R waves suggests:",o:["Posterior MI; obtain V7-V9","Anterior ischemia only","Left ventricular hypertrophy only","Pericarditis"],e:"Posterior wall MI appears as reciprocal changes in V1-V3. ST elevation in posterior leads V7-V9 confirms it."},
+{t:"cardiac",s:"1",q:"An unstable patient in narrow-complex tachycardia with a pulse should receive:",o:["Synchronized cardioversion","Unsynchronized defibrillation","Transcutaneous pacing","Atropine"],e:"Synchronization avoids delivering a shock on the T wave (R-on-T), which can cause VF."},
+{t:"cardiac",s:"1",q:"How should mechanical capture be confirmed during transcutaneous pacing?",o:["Palpating a femoral pulse that matches the paced rate","Seeing pacing spikes on the monitor","Muscle twitching of the chest wall","Checking the radial pulse"],e:"Electrical capture is a wide QRS after each spike, but only a pulse confirms mechanical capture. Femoral is preferred because chest twitching can be mistaken for carotid/radial pulses."},
+{t:"cardiac",s:"1",q:"First-line treatment for torsades de pointes with a pulse is:",o:["Magnesium sulfate 2 g IV","Amiodarone 300 mg IV push","Adenosine 6 mg","Procainamide"],e:"Magnesium stabilizes the myocardium. Correct the cause (QT-prolonging drugs, hypokalemia); overdrive pacing may be used."},
+{t:"cardiac",s:"1",q:"Upsloping ST depression at the J point with tall, symmetric precordial T waves (de Winter pattern) suggests:",o:["Acute proximal LAD occlusion","Hypokalemia","Normal variant","Digoxin effect"],e:"De Winter T waves are a STEMI equivalent and need emergent reperfusion."},
+{t:"cardiac",s:"1",q:"Under Sgarbossa criteria, which finding in LBBB strongly suggests acute MI?",o:["Concordant ST elevation of 1 mm or more","Discordant T waves","QRS over 120 ms","Left axis deviation"],e:"In LBBB the ST segment is normally discordant (opposite) to the QRS. Concordant ST elevation (same direction) is highly specific for MI."},
+{t:"cardiac",s:"1",q:"The aspirin dose for suspected ACS is:",o:["162-325 mg chewed (non-enteric coated)","81 mg enteric coated swallowed","1 g IV","650 mg rectal only"],e:"Chewing non-enteric-coated aspirin speeds absorption and platelet inhibition."},
+{t:"cardiac",s:"1",q:"For cardiogenic shock with hypotension, the first-line vasopressor is generally:",o:["Norepinephrine","Phenylephrine","Nitroglycerin","Isoproterenol"],e:"Norepinephrine raises MAP with less tachycardia/arrhythmia risk than dopamine. An inotrope or mechanical support may be added."},
+{t:"cardiac",s:"1",q:"In acute type A aortic dissection, the first medication priority is:",o:["Heart rate control with a beta-blocker (e.g., esmolol), HR under 60","Vasodilator alone (e.g., nicardipine) before rate control","Heparin bolus","Fluid bolus to raise BP"],e:"Lower shear stress first: HR under 60 and SBP around 100-120. A vasodilator alone causes reflex tachycardia."},
+{t:"cardiac",s:"1",q:"With an IABP in place, the left radial pulse becomes weak. The likely cause is:",o:["Balloon migration upward obstructing the left subclavian artery","Balloon too low near the renal arteries","Normal finding","Timing set too early"],e:"The tip should sit just below the left subclavian artery. Migration up affects the left arm pulse; migration down can block renal arteries (falling urine output)."},
+{t:"cardiac",s:"1",q:"For shock-refractory VF in adults, the first dose of amiodarone is:",o:["300 mg IV/IO","150 mg IV/IO","1 mg/kg IV","5 mg/kg IV"],e:"300 mg first, then 150 mg. Lidocaine 1-1.5 mg/kg is an alternative."},
+{t:"cardiac",s:"2",q:"How should adenosine be given?",o:["Rapid IV push in a proximal vein followed by a saline flush","Slow IV over 10 minutes","IM in the deltoid","Diluted infusion over 1 hour"],e:"Adenosine's half-life is under 10 seconds. Start with 6 mg rapid push; 12 mg if needed."},
+{t:"cardiac",s:"2",q:"Coved ST elevation in V1-V2 with an RBBB-like pattern suggests:",o:["Brugada syndrome","Wellens syndrome","Pericarditis","Hypothermia"],e:"Brugada is a sodium channelopathy with risk of sudden cardiac death from VT/VF. Fever can unmask it."},
+{t:"cardiac",s:"2",q:"A patient with inferior STEMI becomes hypotensive after one dose of nitroglycerin. Next action:",o:["Give a fluid bolus","Give a second nitroglycerin","Start nitroglycerin infusion","Give furosemide"],e:"Suspect RV infarction, which depends on preload. Fluids restore filling; avoid nitrates and diuretics."},
+{t:"cardiac",s:"2",q:"Diffuse concave ST elevation with PR depression is most consistent with:",o:["Pericarditis","Anterior STEMI","Hyperkalemia","Posterior MI"],e:"Pericarditis has widespread ST elevation not confined to a coronary territory, often with PR depression (PR elevation in aVR) and no reciprocal changes except aVR/V1."},
+{t:"cardiac",s:"2",q:"A stable patient has rapid, irregular wide-complex tachycardia (atrial fibrillation with WPW). Avoid:",o:["AV nodal blockers such as adenosine, diltiazem and beta-blockers","Procainamide","Synchronized cardioversion","Expert consultation"],e:"Blocking the AV node pushes impulses down the accessory pathway and can precipitate VF. Use procainamide or cardioversion."},
+{t:"cardiac",s:"2",q:"The key difference between VA-ECMO and VV-ECMO is that VA-ECMO:",o:["Supports both heart and lungs","Supports only the lungs","Requires no anticoagulation","Is used only in neonates"],e:"VA-ECMO drains venous blood and returns it to the arterial system, bypassing the heart. VV-ECMO only oxygenates blood returned to the venous side."},
+{t:"cardiac",s:"2",q:"An Impella device works by:",o:["Pulling blood from the left ventricle and ejecting it into the ascending aorta","Inflating in the aorta during diastole","Pacing the right ventricle","Oxygenating blood outside the body"],e:"The Impella is a percutaneous axial-flow pump across the aortic valve that directly unloads the LV. Position checks and watching for hemolysis are key."},
+{t:"cardiac",s:"2",q:"An LVAD shows low flow and low pulsatility index with suction events. The most likely cause is:",o:["Hypovolemia","Hypertension","Fluid overload","Pump thrombosis with high power"],e:"An underfilled LV lets the inflow cannula suck the septum. Give fluid and reduce speed if allowed. High power with high flow suggests thrombosis."},
+{t:"cardiac",s:"2",q:"Third-degree AV block with a wide escape rhythm and hypotension is best treated with:",o:["Transcutaneous pacing","Adenosine","Amiodarone","Observation"],e:"Atropine rarely helps infranodal blocks. Pace (or start epinephrine/dopamine infusion) as a bridge to transvenous pacing."},
+{t:"cardiac",s:"2",q:"Pacer spikes appear but are not followed by QRS complexes. This is:",o:["Failure to capture; increase the output (mA)","Failure to sense","Oversensing","Normal paced rhythm"],e:"Failure to capture means the stimulus is not depolarizing the myocardium. Increase mA, check pads/leads and correct electrolytes or acidosis."},
+{t:"cardiac",s:"2",q:"Osborn (J) waves on the ECG are characteristic of:",o:["Hypothermia","Hyperkalemia","Hypocalcemia","Digoxin toxicity"],e:"The positive deflection at the J point grows as core temperature falls. Bradycardia and long intervals are also common."},
+{t:"cardiac",s:"2",q:"Nitroglycerin is contraindicated after sildenafil use within the past:",o:["24 hours (48 hours for tadalafil)","1 week","2 hours only","There is no interaction"],e:"PDE-5 inhibitors and nitrates both raise cGMP, causing profound hypotension."}
+);
+
+window.QB = window.QB || [];
+QB.push(
+// ===== RESUSCITATION, SHOCK & HEMODYNAMICS =====
+{t:"shock",s:"r",q:"Calculate the MAP for a blood pressure of 90/60 mmHg.",o:["70 mmHg","75 mmHg","80 mmHg","65 mmHg"],e:"MAP is about (SBP + 2 x DBP) / 3 = (90 + 120) / 3 = 70 mmHg. A MAP of at least 65 is the usual perfusion target."},
+{t:"shock",s:"r",q:"Cardiac output is calculated as:",o:["Heart rate x stroke volume","MAP x SVR","Stroke volume / heart rate","Preload + afterload"],e:"Normal CO is about 4-8 L/min. Cardiac index (CO / body surface area) normalizes for patient size, normally about 2.5-4 L/min/m2."},
+{t:"shock",s:"r",q:"Early (warm) septic shock typically shows:",o:["Low SVR with normal or high cardiac output","High SVR with low cardiac output","High PCWP and low CO","High CVP and high SVR"],e:"Distributive shock causes vasodilation (low SVR); the heart compensates with high output. Cardiac function may later decline."},
+{t:"shock",s:"r",q:"Which hemodynamic profile fits cardiogenic shock?",o:["Low CO, high SVR, high PCWP","High CO, low SVR, low PCWP","Low CO, low SVR, low PCWP","High CO, high SVR, low CVP"],e:"The failing pump causes backup (elevated PCWP) and compensatory vasoconstriction (high SVR)."},
+{t:"shock",s:"r",q:"A normal pulmonary capillary wedge pressure (PCWP) is approximately:",o:["8-12 mmHg","2-6 mmHg","20-30 mmHg","25-35 mmHg"],e:"PCWP estimates left atrial pressure / LV preload. Normal CVP (right-sided preload) is about 2-6 mmHg."},
+{t:"shock",s:"r",q:"Hypotension with bradycardia and warm, dry skin after a cervical spine injury suggests:",o:["Neurogenic shock","Hypovolemic shock","Cardiogenic shock","Septic shock"],e:"Loss of sympathetic tone causes vasodilation and unopposed vagal tone. Rule out hemorrhage first, then treat with fluids, vasopressors and atropine/pacing for bradycardia."},
+{t:"shock",s:"1",q:"Which hemodynamic profile fits hypovolemic shock?",o:["Low CVP, low PCWP, high SVR","High CVP, high PCWP, low SVR","Normal CVP, high CO","High CO, low SVR"],e:"Low preload on both sides with compensatory vasoconstriction."},
+{t:"shock",s:"1",q:"Initial crystalloid for sepsis-induced hypotension or lactate of 4 or more is:",o:["30 mL/kg within the first 3 hours","5 mL/kg over 24 hours","100 mL/kg in the first hour","No fluid; start pressors only"],e:"Surviving Sepsis guidance suggests 30 mL/kg, reassessing response frequently. Adjust for heart failure or volume overload."},
+{t:"shock",s:"1",q:"A serum lactate of 4.5 mmol/L most likely indicates:",o:["Significant tissue hypoperfusion","Normal metabolism","Respiratory alkalosis","Hypoglycemia"],e:"Normal lactate is under 2 mmol/L. A level of 4 or higher is associated with higher mortality and should prompt aggressive resuscitation."},
+{t:"shock",s:"1",q:"Norepinephrine acts primarily on which receptors?",o:["Alpha-1, with some beta-1","Beta-2 only","Dopamine receptors only","Muscarinic receptors"],e:"Strong alpha-1 vasoconstriction plus moderate beta-1 inotropy make norepinephrine first-line for septic shock."},
+{t:"shock",s:"1",q:"A mixed venous oxygen saturation (SvO2) of 45% suggests:",o:["Oxygen delivery inadequate for demand","Normal oxygen balance","Excessive oxygen delivery","Cyanide poisoning"],e:"Normal SvO2 is about 60-80%. Low values mean tissues are extracting more O2 (low CO, anemia, hypoxia, high demand). Abnormally high values occur with sepsis or cyanide."},
+{t:"shock",s:"1",q:"Phenylephrine may cause which side effect?",o:["Reflex bradycardia","Severe tachycardia","Bronchodilation","Hypoglycemia"],e:"As a pure alpha-1 agonist, it raises SVR without beta effects; the baroreceptor reflex slows the heart."},
+{t:"shock",s:"1",q:"Systemic vascular resistance (SVR) is a measure of:",o:["Left ventricular afterload","Right ventricular preload","Contractility","Left ventricular preload"],e:"Normal SVR is about 800-1,200 dynes/sec/cm-5. PVR reflects RV afterload."},
+{t:"shock",s:"1",q:"Which is a cause of obstructive shock?",o:["Tension pneumothorax","Anaphylaxis","Spinal cord injury","GI hemorrhage"],e:"Obstructive shock comes from mechanical obstruction of flow: tension pneumothorax, cardiac tamponade, massive PE."},
+{t:"shock",s:"2",q:"Dobutamine can cause hypotension because it:",o:["Stimulates beta-2 receptors causing vasodilation","Is a pure alpha agonist","Causes bradycardia","Increases preload"],e:"Dobutamine is mainly a beta-1 inotrope with some beta-2 effect. It increases CO but may drop SVR, so a vasopressor may be needed."},
+{t:"shock",s:"2",q:"Vasopressin in septic shock is typically given as:",o:["A fixed dose around 0.03 units/min added to norepinephrine","A 40-unit push every 3 minutes","A weight-based titration starting at 1 unit/kg/min","An oral loading dose"],e:"Vasopressin acts on V1 receptors and is an adjunct that can reduce norepinephrine requirements."},
+{t:"shock",s:"2",q:"The initial adult epinephrine dose for anaphylaxis is:",o:["0.3-0.5 mg IM (1 mg/mL) in the anterolateral thigh","1 mg IV push of 0.1 mg/mL","0.01 mg IV","5 mg subcutaneous"],e:"IM epinephrine 0.01 mg/kg (max 0.5 mg) can be repeated every 5-15 minutes. Refractory shock calls for an epinephrine infusion."},
+{t:"shock",s:"2",q:"An overdamped arterial line waveform will cause:",o:["Falsely low systolic and falsely high diastolic readings","Falsely high systolic readings","Accurate readings","Falsely high MAP"],e:"Overdamping (air bubbles, clots, kinks, soft tubing) flattens the waveform. The square-wave (fast flush) test checks dampening. MAP stays relatively reliable."},
+{t:"shock",s:"2",q:"The phlebostatic axis for leveling a transducer is the:",o:["4th intercostal space at the mid-axillary line","2nd intercostal space at the mid-clavicular line","5th intercostal space at the anterior axillary line","Sternal notch"],e:"This approximates the level of the right atrium. Re-level whenever the patient's position changes."},
+{t:"shock",s:"2",q:"If the transducer is positioned below the phlebostatic axis, readings will be:",o:["Falsely high","Falsely low","Unchanged","Zero"],e:"The fluid column adds hydrostatic pressure, about 0.74 mmHg per cm. A transducer above the axis reads falsely low."},
+{t:"shock",s:"2",q:"The three determinants of stroke volume are:",o:["Preload, afterload and contractility","Heart rate, SVR and MAP","Hemoglobin, SpO2 and PaO2","CVP, ICP and CPP"],e:"Optimizing these three plus heart rate is the basis of managing cardiac output."},
+{t:"shock",s:"2",q:"A shock index above 1.0 (HR / SBP) suggests:",o:["Significant shock or occult hemorrhage","Normal physiology","Hypertensive crisis","Neurogenic shock only"],e:"Normal shock index is about 0.5-0.7. Values above 1 correlate with transfusion need and mortality in trauma."},
+
+// ===== NEUROLOGY =====
+{t:"neuro",s:"r",q:"Cerebral perfusion pressure is calculated as:",o:["MAP minus ICP","ICP minus MAP","SBP minus ICP","MAP plus CVP"],e:"CPP = MAP - ICP. Adult TBI targets are usually CPP 60-70 mmHg. Example: MAP 80, ICP 20 gives CPP 60."},
+{t:"neuro",s:"r",q:"Cushing's triad consists of:",o:["Hypertension with widened pulse pressure, bradycardia and irregular respirations","Hypotension, tachycardia and tachypnea","Hypotension, JVD and muffled heart sounds","Fever, neck stiffness and rash"],e:"Cushing's triad is a late sign of rising ICP and impending herniation."},
+{t:"neuro",s:"r",q:"A patient opens eyes to pain, makes incomprehensible sounds and withdraws from pain. GCS:",o:["8","7","9","6"],e:"Eyes to pain 2 + incomprehensible sounds 2 + withdraws 4 = 8."},
+{t:"neuro",s:"r",q:"When is brief hyperventilation (PaCO2 about 30-35 mmHg) appropriate in TBI?",o:["Only with signs of active herniation as a temporizing measure","Routinely for all TBI patients","When the GCS is 14","Never in any circumstance"],e:"Hyperventilation lowers ICP by vasoconstriction but also reduces cerebral blood flow and risks ischemia. Otherwise target normocapnia (PaCO2 35-45, ETCO2 about 35-40)."},
+{t:"neuro",s:"r",q:"Which hyperosmolar therapies are used for signs of elevated ICP?",o:["Hypertonic saline or mannitol","D5W and LR","Furosemide alone","Albumin 5%"],e:"Hypertonic saline (e.g., 3%) or mannitol (0.5-1 g/kg) draw water from brain tissue. Mannitol is a diuretic that can drop BP; hypertonic saline also supports volume."},
+{t:"neuro",s:"r",q:"Before and after IV thrombolytics for ischemic stroke, blood pressure should be kept below:",o:["185/110 before and 180/105 after","220/120 before and after","140/90 before and after","160/100 before only"],e:"Higher pressures raise the risk of hemorrhagic transformation. Labetalol or nicardipine are commonly used."},
+{t:"neuro",s:"1",q:"A head-injury patient briefly loses consciousness, is then lucid, then rapidly deteriorates. Most likely:",o:["Epidural hematoma","Subdural hematoma","Subarachnoid hemorrhage","Concussion"],e:"Epidural hematomas are usually arterial (middle meningeal artery) from temporal bone fractures and expand quickly. They need emergent surgical evacuation."},
+{t:"neuro",s:"1",q:"Subdural hematomas usually come from:",o:["Torn bridging veins","The middle meningeal artery","A ruptured berry aneurysm","Carotid dissection"],e:"Elderly patients, those with alcohol use disorder and anticoagulated patients are at higher risk because brain atrophy stretches these veins."},
+{t:"neuro",s:"1",q:"First-line treatment for status epilepticus is:",o:["A benzodiazepine (e.g., midazolam or lorazepam)","Levetiracetam","Phenobarbital","Propofol infusion"],e:"Benzodiazepines are first-line. Second-line agents include levetiracetam, fosphenytoin or valproate. Refractory cases need anesthetic agents and intubation."},
+{t:"neuro",s:"1",q:"An elderly patient falls forward hitting the chin and has more weakness in the arms than legs. Most likely:",o:["Central cord syndrome","Anterior cord syndrome","Brown-Sequard syndrome","Complete cord transection"],e:"Hyperextension in a narrowed (spondylotic) canal damages the central cord, where upper extremity tracts lie more medially."},
+{t:"neuro",s:"1",q:"Brown-Sequard syndrome causes:",o:["Ipsilateral motor and proprioception loss with contralateral pain and temperature loss","Bilateral motor loss with preserved proprioception","Upper extremity weakness only","Complete loss below the lesion"],e:"Classically from penetrating hemisection of the cord. It has the best prognosis among incomplete cord syndromes."},
+{t:"neuro",s:"1",q:"Which medication is given to prevent vasospasm after aneurysmal subarachnoid hemorrhage?",o:["Nimodipine","Nitroprusside","Mannitol","Phenytoin"],e:"Oral nimodipine improves outcomes after aneurysmal SAH. The classic presentation is a sudden 'thunderclap' worst headache."},
+{t:"neuro",s:"1",q:"Compared with decorticate posturing, decerebrate posturing:",o:["Involves extension and indicates a deeper brainstem injury with worse prognosis","Involves flexion and is less serious","Is a seizure","Indicates spinal cord injury only"],e:"Decorticate (flexion, GCS motor 3) suggests injury above the midbrain; decerebrate (extension, motor 2) suggests midbrain/pons involvement."},
+{t:"neuro",s:"1",q:"For a large vessel occlusion stroke, mechanical thrombectomy may be offered in selected patients up to:",o:["24 hours from last known well","3 hours only","48 hours","1 hour only"],e:"Trials (DAWN, DEFUSE-3) extended the window to 24 hours using imaging selection. Rapid transport to a thrombectomy-capable center is key."},
+{t:"neuro",s:"2",q:"A patient with a T4 spinal cord injury has a severe headache, BP 220/120 and bradycardia. First action:",o:["Sit the patient up and look for/remove a noxious stimulus such as a full bladder","Lay the patient flat and give fluids","Give atropine","Apply warm blankets"],e:"Autonomic dysreflexia occurs with lesions at T6 or above. Common triggers are bladder distension, constipation and tight clothing. Treat persistent hypertension if needed."},
+{t:"neuro",s:"2",q:"After severe head injury, a patient has very high urine output, hypernatremia and low urine specific gravity. Most likely:",o:["Diabetes insipidus","SIADH","Cerebral salt wasting","Acute kidney injury"],e:"Lack of ADH causes free water loss. Treat with desmopressin and fluid replacement."},
+{t:"neuro",s:"2",q:"SIADH typically presents with:",o:["Hyponatremia with concentrated urine","Hypernatremia with dilute urine","Hyperkalemia with polyuria","Hypoglycemia"],e:"Excess ADH retains water, diluting serum sodium. Treat with fluid restriction; hypertonic saline for severe symptoms."},
+{t:"neuro",s:"2",q:"In myasthenic crisis, which finding suggests imminent respiratory failure?",o:["Vital capacity less than 20 mL/kg","SpO2 of 97%","Ptosis alone","Diplopia"],e:"The 20/30/40 rule: VC under 20 mL/kg, NIF weaker than -30 cm H2O, or a 30% decline. SpO2 drops late in neuromuscular failure."},
+{t:"neuro",s:"2",q:"Ascending symmetrical weakness weeks after a GI or respiratory illness suggests:",o:["Guillain-Barre syndrome","Myasthenia gravis","Multiple sclerosis","Botulism"],e:"GBS can progress to respiratory failure and autonomic instability. Botulism, by contrast, is descending."},
+{t:"neuro",s:"2",q:"A unilateral fixed, dilated pupil in head injury usually indicates:",o:["Uncal herniation compressing CN III on the same side","Opioid overdose","Cerebellar stroke","Normal anisocoria"],e:"The temporal lobe uncus compresses the oculomotor nerve, typically on the side of the lesion."},
+{t:"neuro",s:"2",q:"Normal adult intracranial pressure is about:",o:["5-15 mmHg","20-30 mmHg","30-40 mmHg","0-2 mmHg"],e:"An ICP above about 20-22 mmHg is generally treated."},
+{t:"neuro",s:"2",q:"Which positioning measure helps reduce ICP?",o:["Head of bed at 30 degrees with the head midline and no tight collar","Trendelenburg position","Head turned to one side","Flat supine with tight cervical collar"],e:"Head elevation and midline alignment promote venous drainage through the jugular veins."}
+);
+
+window.QB = window.QB || [];
+QB.push(
+// ===== GENERAL MEDICAL (ENDOCRINE, RENAL, GI, LABS) =====
+{t:"medical",s:"r",q:"In DKA, insulin infusion should be held until serum potassium is at least:",o:["3.3 mEq/L","2.0 mEq/L","5.5 mEq/L","4.5 mEq/L"],e:"Insulin drives potassium into cells and can cause fatal hypokalemia. Replace potassium first if it is under 3.3 mEq/L."},
+{t:"medical",s:"r",q:"Na 140, Cl 100, HCO3 10. What is the anion gap?",o:["30","50","10","20"],e:"AG = Na - (Cl + HCO3) = 140 - 110 = 30. Normal is about 8-12. A high gap suggests MUDPILES causes (e.g., DKA, lactic acidosis, toxic alcohols)."},
+{t:"medical",s:"r",q:"In hyperkalemia with ECG changes, the first medication given is:",o:["Calcium (chloride or gluconate)","Insulin and dextrose","Furosemide","Kayexalate"],e:"Calcium stabilizes the cardiac membrane within minutes but doesn't lower potassium. Then shift K+ (insulin/dextrose, albuterol, bicarbonate if acidotic) and remove it (diuretics, dialysis)."},
+{t:"medical",s:"r",q:"Winter's formula, used to check respiratory compensation in metabolic acidosis, is:",o:["Expected PaCO2 = 1.5 x HCO3 + 8 (plus or minus 2)","Expected PaCO2 = HCO3 + 15","Expected HCO3 = PaCO2 / 2","Expected pH = 7.4 - HCO3"],e:"If measured PaCO2 is higher than expected there is a concurrent respiratory acidosis; lower means a concurrent respiratory alkalosis. Important when setting vent rate in DKA."},
+{t:"medical",s:"r",q:"A patient on chronic steroids is hypotensive and unresponsive to fluids and vasopressors. Give:",o:["Hydrocortisone 100 mg IV","Dexamethasone 0.1 mg PO","Levothyroxine","Glucagon"],e:"Adrenal crisis presents with refractory hypotension, hyponatremia, hyperkalemia and hypoglycemia. Hydrocortisone provides glucocorticoid and mineralocorticoid effect."},
+{t:"medical",s:"r",q:"Which finding distinguishes HHS from DKA?",o:["Glucose often over 600 mg/dL with osmolality over 320 and minimal ketones","Profound ketoacidosis with pH under 7.0","Glucose under 250 mg/dL","Kussmaul respirations with high anion gap"],e:"HHS develops more slowly with severe dehydration and altered mental status. Fluid replacement is the cornerstone of treatment."},
+{t:"medical",s:"1",q:"Chvostek's and Trousseau's signs suggest:",o:["Hypocalcemia","Hypercalcemia","Hyperkalemia","Hypernatremia"],e:"Hypocalcemia increases neuromuscular excitability and can prolong the QT interval. Common after massive transfusion (citrate)."},
+{t:"medical",s:"1",q:"Loss of deep tendon reflexes and respiratory depression suggest toxicity of:",o:["Magnesium","Potassium","Sodium","Phosphate"],e:"Treat hypermagnesemia with calcium gluconate (or chloride), stop the infusion, and support ventilation."},
+{t:"medical",s:"1",q:"In suspected variceal hemorrhage in a cirrhotic patient, which medication reduces portal pressure?",o:["Octreotide","Heparin","Nitroglycerin","Aspirin"],e:"Octreotide causes splanchnic vasoconstriction. Antibiotic prophylaxis (e.g., ceftriaxone), restrictive transfusion and endoscopy are also key."},
+{t:"medical",s:"1",q:"In thyroid storm, which medication controls the adrenergic symptoms?",o:["Propranolol","Levothyroxine","Epinephrine","Atropine"],e:"Beta-blockade controls tachycardia and hyperthermia effects. Thionamides (PTU) are given before iodine; steroids help too."},
+{t:"medical",s:"1",q:"Hypothermia, bradycardia, hyponatremia and altered mental status in a patient with hypothyroidism suggest:",o:["Myxedema coma","Thyroid storm","Addisonian crisis","Heat stroke"],e:"Treat with IV levothyroxine plus hydrocortisone (until adrenal insufficiency is excluded), passive rewarming and supportive care."},
+{t:"medical",s:"1",q:"To avoid osmotic demyelination, chronic hyponatremia should be corrected no faster than about:",o:["8-10 mEq/L in 24 hours","20-25 mEq/L in 24 hours","1 mEq/L per week","Correct to normal within 2 hours"],e:"Rapid correction risks osmotic demyelination syndrome. Severe symptoms (seizures) warrant small hypertonic saline boluses to raise Na by about 4-6 mEq/L."},
+{t:"medical",s:"1",q:"In septic shock, broad-spectrum antibiotics should ideally be given within:",o:["1 hour of recognition","6 hours","24 hours","After all cultures result"],e:"Every hour of delay increases mortality. Obtain cultures quickly but do not let them delay antibiotics."},
+{t:"medical",s:"1",q:"In rhabdomyolysis, aggressive fluid therapy usually targets a urine output of about:",o:["200-300 mL/hour","10 mL/hour","0.1 mL/kg/hour","1,000 mL/hour"],e:"High urine flow helps flush myoglobin and prevent acute kidney injury. Monitor for hyperkalemia and fluid overload."},
+{t:"medical",s:"1",q:"Interpret: pH 7.25, PaCO2 28, HCO3 12.",o:["Metabolic acidosis with appropriate respiratory compensation","Respiratory acidosis","Metabolic alkalosis","Mixed metabolic and respiratory acidosis"],e:"Winter's: 1.5 x 12 + 8 = 26 (range 24-28). PaCO2 of 28 is within range, so compensation is appropriate."},
+{t:"medical",s:"2",q:"Initial fluid resuscitation for an adult with DKA is typically:",o:["About 1-1.5 L (15-20 mL/kg) isotonic crystalloid in the first hour","D5W at 50 mL/hr","Hypotonic 0.45% saline 4 L bolus","No fluid until insulin starts"],e:"Patients are often several liters behind. Add dextrose once glucose falls to about 250 mg/dL while continuing insulin to close the gap."},
+{t:"medical",s:"2",q:"A typical insulin infusion rate for adult DKA is:",o:["0.1 units/kg/hour","1 unit/kg/hour","10 units/kg/hour","0.01 units/kg/day"],e:"0.1 units/kg/hr (with optional 0.1 unit/kg bolus) or 0.14 units/kg/hr without a bolus."},
+{t:"medical",s:"2",q:"In a hypoglycemic patient with chronic alcohol use, which should be given with dextrose?",o:["Thiamine","Naloxone","Potassium chloride","Insulin"],e:"Thiamine prevents or treats Wernicke encephalopathy. Do not delay dextrose to give thiamine."},
+{t:"medical",s:"2",q:"ECG findings of hypokalemia include:",o:["U waves and flattened T waves","Peaked T waves","Osborn waves","Short QT"],e:"Hypokalemia increases risk of dysrhythmias, especially with digoxin. Check and correct magnesium too."},
+{t:"medical",s:"2",q:"First-line treatment for symptomatic hypercalcemia is:",o:["IV normal saline","Calcium gluconate","Thiazide diuretic","Potassium supplementation"],e:"Volume repletion promotes calcium excretion. Bisphosphonates and calcitonin follow. Symptoms: 'stones, bones, groans and psychiatric overtones'."},
+{t:"medical",s:"2",q:"Flank bruising in a patient with severe pancreatitis is called:",o:["Grey Turner's sign","Cullen's sign","Murphy's sign","Kehr's sign"],e:"Grey Turner's = flank ecchymosis; Cullen's = periumbilical ecchymosis. Both indicate retroperitoneal hemorrhage."},
+{t:"medical",s:"2",q:"Na 140, glucose 180 mg/dL, BUN 28 mg/dL. Calculated serum osmolality is about:",o:["300 mOsm/kg","280 mOsm/kg","320 mOsm/kg","350 mOsm/kg"],e:"2(Na) + glucose/18 + BUN/2.8 = 280 + 10 + 10 = 300. Normal is about 275-295."},
+{t:"medical",s:"2",q:"Prolonged vomiting typically causes:",o:["Hypochloremic, hypokalemic metabolic alkalosis","Hyperchloremic metabolic acidosis","Respiratory acidosis","High anion gap metabolic acidosis"],e:"Loss of gastric HCl raises bicarbonate; volume depletion activates aldosterone, wasting potassium."},
+{t:"medical",s:"2",q:"Which lab pattern is consistent with DIC?",o:["Low platelets, low fibrinogen, high D-dimer, prolonged PT/PTT","High platelets, high fibrinogen","Normal coagulation with low hemoglobin","Elevated fibrinogen with normal D-dimer"],e:"Widespread clotting consumes platelets and factors while fibrinolysis raises D-dimer. Treat the cause and replace products as needed."},
+
+// ===== TRAUMA & BURNS =====
+{t:"trauma",s:"r",q:"Using the Parkland formula, what is the 24-hour fluid for an 80 kg adult with 50% TBSA burns?",o:["16,000 mL, with half in the first 8 hours from time of burn","8,000 mL over 24 hours, evenly","4,000 mL over 8 hours","32,000 mL"],e:"4 mL x 80 kg x 50 = 16,000 mL of LR. Many burn centers now start at 2 mL/kg/%TBSA in adults; titrate to urine output 0.5 mL/kg/hr (adults)."},
+{t:"trauma",s:"r",q:"Using the adult rule of nines, the entire anterior trunk is:",o:["18%","9%","36%","27%"],e:"Head 9, each arm 9, anterior trunk 18, posterior trunk 18, each leg 18, perineum 1. The patient's palm (with fingers) is about 1%."},
+{t:"trauma",s:"r",q:"Tranexamic acid (TXA) in trauma is given as:",o:["1 g IV over 10 minutes within 3 hours of injury, then 1 g over 8 hours","1 g IV after 6 hours","5 g IV push","Only after massive transfusion is complete"],e:"CRASH-2 showed reduced bleeding deaths when given early. After 3 hours, benefit is lost and risk may increase."},
+{t:"trauma",s:"r",q:"Permissive hypotension in penetrating torso trauma (without TBI) typically targets:",o:["SBP about 80-90 mmHg or a palpable radial pulse","SBP of 140","MAP of 100","No fluid at all"],e:"Avoiding aggressive pressure helps prevent clot disruption and dilution until surgical control. It is contraindicated with TBI."},
+{t:"trauma",s:"r",q:"The 'lethal triad' of trauma consists of:",o:["Hypothermia, acidosis and coagulopathy","Hypoxia, hypertension and bradycardia","Hypotension, JVD and muffled sounds","Fever, tachycardia and hypotension"],e:"Each worsens the others. Some add hypocalcemia as a fourth element (the 'lethal diamond')."},
+{t:"trauma",s:"r",q:"Per current ATLS, the preferred site for adult needle decompression is:",o:["4th or 5th intercostal space just anterior to the mid-axillary line","2nd intercostal space at the sternal border","6th intercostal space posterior axillary line","Subxiphoid"],e:"The lateral site has a thinner chest wall in adults. The 2nd ICS mid-clavicular line remains an alternative, especially in children."},
+{t:"trauma",s:"1",q:"The recommended ratio for massive transfusion is approximately:",o:["1:1:1 plasma:platelets:RBCs","1:4 plasma:RBCs","RBCs only","Crystalloid 3:1 for blood lost"],e:"Balanced ratios (PROPPR) improve hemostasis. Whole blood is increasingly used."},
+{t:"trauma",s:"1",q:"An adult with 30-40% blood loss, HR over 120, decreased SBP and confusion is in which hemorrhage class?",o:["Class III","Class I","Class II","Class IV"],e:"Class III is the first class where hypotension is reliably seen; blood products are needed. Class IV is over 40% loss."},
+{t:"trauma",s:"1",q:"A pelvic binder should be centered over:",o:["The greater trochanters","The iliac crests","The lower abdomen at the umbilicus","The mid-thighs"],e:"Placing at the trochanters closes the pelvic ring most effectively. Too high reduces effectiveness."},
+{t:"trauma",s:"1",q:"In flail chest, the main cause of hypoxia is usually:",o:["The underlying pulmonary contusion","The paradoxical movement itself","Pain only","Hemothorax always"],e:"Contused lung leads to V/Q mismatch. Provide analgesia, oxygen and positive pressure if needed."},
+{t:"trauma",s:"1",q:"A patient with circumferential full-thickness chest burns has rising airway pressures and falling tidal volumes. Indicated procedure:",o:["Escharotomy","Fasciotomy of the forearm","Pericardiocentesis","Increase tidal volume"],e:"Inelastic eschar restricts chest wall expansion. Escharotomy restores compliance."},
+{t:"trauma",s:"1",q:"For an adult high-voltage electrical injury with myoglobinuria, target urine output is about:",o:["75-100 mL/hour (about 1-1.5 mL/kg/hr) until it clears","0.5 mL/kg/hr","10 mL/hour","No target needed"],e:"Muscle damage releases myoglobin. Visible skin burns underestimate deep injury, so the Parkland formula underestimates needs."},
+{t:"trauma",s:"1",q:"Which finding most strongly suggests inhalation injury requiring early airway management?",o:["Hoarseness, stridor and carbonaceous sputum","A small hand burn","Mild tachycardia","Sunburn of the face"],e:"Airway edema progresses rapidly. Singed facial/nasal hair alone is less specific but should raise concern."},
+{t:"trauma",s:"1",q:"Abdominal compartment syndrome is defined by bladder pressure above about:",o:["20 mmHg with new organ dysfunction","5 mmHg","10 mmHg without symptoms","50 mmHg only"],e:"Signs include tense abdomen, rising airway pressures, oliguria and hypotension. Decompressive laparotomy is definitive."},
+{t:"trauma",s:"1",q:"The earliest sign of extremity compartment syndrome is usually:",o:["Pain out of proportion, especially with passive stretch","Absent pulses","Paralysis","Pallor"],e:"Pulselessness and paralysis are late. Compartment pressure within about 30 mmHg of diastolic pressure supports diagnosis."},
+{t:"trauma",s:"1",q:"After massive transfusion, a patient develops a prolonged QT and hypotension. The likely cause is:",o:["Hypocalcemia from citrate","Hyperkalemia only","Hypermagnesemia","Hypernatremia"],e:"Citrate in stored blood binds calcium. Give calcium chloride or gluconate during massive transfusion."},
+{t:"trauma",s:"2",q:"Zone II of the neck is between:",o:["The cricoid cartilage and the angle of the mandible","The clavicles and the cricoid","The angle of the mandible and the skull base","The sternal notch and the thyroid"],e:"Zone I: clavicles to cricoid. Zone II: cricoid to angle of mandible (most accessible). Zone III: above the angle of the mandible."},
+{t:"trauma",s:"2",q:"Traumatic diaphragmatic rupture is more commonly seen on the:",o:["Left side","Right side","Both sides equally","Central tendon only"],e:"The liver protects the right hemidiaphragm. Bowel sounds in the chest or an NG tube in the chest on X-ray suggest it."},
+{t:"trauma",s:"2",q:"Blunt traumatic aortic injury most commonly occurs at:",o:["The isthmus near the ligamentum arteriosum","The aortic root","The abdominal aorta at the renal arteries","The aortic bifurcation"],e:"Rapid deceleration shears the aorta where it is fixed. A widened mediastinum on X-ray is a classic clue. Control HR and BP."},
+{t:"trauma",s:"2",q:"Which hemothorax finding is an indication for surgical thoracotomy?",o:["Initial chest tube output of 1,500 mL or more, or 200 mL/hr for 2-4 hours","Initial output of 200 mL","Any hemothorax","Output of 50 mL/hr for 2 hours"],e:"Ongoing large-volume bleeding suggests a vascular injury needing surgical control."},
+{t:"trauma",s:"2",q:"Which finding is most associated with a basilar skull fracture?",o:["Battle's sign (mastoid ecchymosis)","Cullen's sign","Kehr's sign","Grey Turner's sign"],e:"Others include raccoon eyes, hemotympanum and CSF otorrhea/rhinorrhea. Avoid nasal tubes."},
+{t:"trauma",s:"2",q:"Before releasing a limb trapped for several hours, which is a priority?",o:["IV fluids, with readiness to treat hyperkalemia","Applying heat packs","Withholding fluids","Giving succinylcholine"],e:"Crush syndrome releases potassium, myoglobin and acids when perfusion returns. Pre-hydrate; consider calcium, bicarbonate and a tourniquet if needed."},
+{t:"trauma",s:"2",q:"A Le Fort III fracture involves:",o:["Separation of the facial skeleton from the cranium (craniofacial disjunction)","Only the maxillary teeth","Only the nasal bones","The mandible only"],e:"Le Fort I: horizontal maxillary. II: pyramidal. III: craniofacial disjunction. Avoid nasal intubation; prepare for difficult airway."},
+{t:"trauma",s:"2",q:"In traumatic cardiac arrest from penetrating chest trauma, a key early intervention is:",o:["Bilateral chest decompression","Withholding all procedures","Amiodarone 300 mg","High-dose epinephrine only"],e:"Treat reversible causes: hypovolemia, tension pneumothorax and tamponade. Epinephrine has limited value in hemorrhagic arrest."},
+{t:"trauma",s:"2",q:"For a dry chemical (e.g., lime) burn, the first step is:",o:["Brush off dry chemical, then irrigate copiously","Irrigate a small amount only","Neutralize with an acid","Apply ointment immediately"],e:"Brushing first prevents a heat-producing reaction. Then irrigate with large volumes of water."},
+{t:"trauma",s:"2",q:"Which blood product is the most concentrated source of fibrinogen?",o:["Cryoprecipitate","Packed red blood cells","Platelets","Albumin"],e:"Cryo contains fibrinogen, factor VIII, factor XIII and von Willebrand factor. Fibrinogen falls early in traumatic coagulopathy."}
+);
+
+window.QB = window.QB || [];
+QB.push(
+// ===== TOXICOLOGY & ENVIRONMENTAL =====
+{t:"tox",s:"r",q:"A TCA overdose patient has a QRS of 140 ms and a terminal R wave in aVR. Give:",o:["Sodium bicarbonate 1-2 mEq/kg IV","Physostigmine","Flumazenil","Procainamide"],e:"TCAs block fast sodium channels. Bicarbonate's sodium load and alkalinization overcome the block. Hyperventilation can help if intubated."},
+{t:"tox",s:"r",q:"In organophosphate poisoning, the endpoint for atropine dosing is:",o:["Drying of bronchial secretions","Pupil dilation","Heart rate of 60","Return of consciousness"],e:"Atropine treats muscarinic effects (bronchorrhea, bronchospasm, bradycardia). Doses can be very large. Pralidoxime treats nicotinic effects (muscle weakness)."},
+{t:"tox",s:"r",q:"Why is pulse oximetry unreliable in carbon monoxide poisoning?",o:["Standard oximeters read carboxyhemoglobin as oxyhemoglobin","CO causes peripheral vasoconstriction only","CO lowers the heart rate","It overestimates CO2"],e:"SpO2 may read normal despite severe hypoxia. Use CO-oximetry (SpCO) and give 100% O2; consider hyperbaric therapy."},
+{t:"tox",s:"r",q:"The antidote of choice for suspected cyanide poisoning in smoke inhalation is:",o:["Hydroxocobalamin 5 g IV","Methylene blue","Naloxone","Atropine"],e:"Hydroxocobalamin binds cyanide to form cyanocobalamin, excreted in urine. It turns skin and urine red and can interfere with colorimetric labs."},
+{t:"tox",s:"r",q:"Severe beta-blocker overdose with refractory hypotension may be treated with:",o:["High-dose insulin euglycemic therapy","Flumazenil","Physostigmine","Ipecac"],e:"High-dose insulin (about 1 unit/kg bolus then 1 unit/kg/hr) improves myocardial use of glucose. Glucagon, calcium, vasopressors and pacing are adjuncts. Monitor glucose and potassium."},
+{t:"tox",s:"r",q:"Exertional heat stroke is defined by core temperature above 40 C (104 F) plus:",o:["CNS dysfunction","Normal mental status","Profuse sweating only","Hypothermia"],e:"Rapid cooling (cold-water immersion when possible) to about 39 C is the priority. Sweating may still be present in exertional cases."},
+{t:"tox",s:"1",q:"The antidote for acetaminophen toxicity is:",o:["N-acetylcysteine","Fomepizole","Deferoxamine","Physostigmine"],e:"NAC replenishes glutathione. Plot a level at 4 hours or later on the Rumack-Matthew nomogram for acute ingestion."},
+{t:"tox",s:"1",q:"Which therapies are used for calcium channel blocker overdose?",o:["IV calcium, high-dose insulin and vasopressors","Flumazenil and naloxone","Fomepizole","Sodium nitrite"],e:"CCB toxicity causes bradycardia, hypotension and often hyperglycemia. Lipid emulsion is a rescue option."},
+{t:"tox",s:"1",q:"A patient on an SSRI and tramadol has agitation, hyperthermia, hyperreflexia and inducible clonus. Most likely:",o:["Serotonin syndrome","Neuroleptic malignant syndrome","Anticholinergic toxicity","Malignant hyperthermia"],e:"Serotonin syndrome develops quickly with clonus/hyperreflexia. NMS develops over days with lead-pipe rigidity. Treat with benzodiazepines, cooling and cyproheptadine."},
+{t:"tox",s:"1",q:"A patient with high anion gap acidosis and blurred 'snowfield' vision likely ingested:",o:["Methanol","Isopropyl alcohol","Ethanol","Acetone"],e:"Formic acid damages the optic nerve. Treat with fomepizole, bicarbonate and dialysis."},
+{t:"tox",s:"1",q:"When intubating a patient with severe salicylate toxicity, a critical concern is:",o:["Matching the patient's high pre-intubation minute ventilation","Avoiding all bicarbonate","Using a low respiratory rate","Using succinylcholine only"],e:"These patients compensate with intense hyperventilation. Normal vent settings cause rapid acidosis and death. Avoid intubating if possible; dialysis is definitive."},
+{t:"tox",s:"1",q:"A severely hypothermic patient should be handled gently because:",o:["Rough movement can precipitate ventricular fibrillation","It causes hypertension","It increases shivering","It worsens frostbite only"],e:"The cold myocardium is irritable. Keep the patient horizontal and rewarm actively."},
+{t:"tox",s:"1",q:"Indications for digoxin-specific antibody fragments include:",o:["Life-threatening dysrhythmias or potassium above 5.0 in acute toxicity","Any visual change","Digoxin level of 1 ng/mL","Mild nausea only"],e:"Hyperkalemia is a marker of severe acute toxicity. Visual yellow halos and GI symptoms are common features."},
+{t:"tox",s:"1",q:"First-line treatment of cocaine-induced agitation, tachycardia and hypertension is:",o:["Benzodiazepines","Haloperidol","Physical restraint alone","Succinylcholine"],e:"Benzodiazepines reduce central sympathetic outflow, treating agitation, hypertension and hyperthermia together."},
+{t:"tox",s:"2",q:"Which feature best distinguishes anticholinergic from sympathomimetic toxicity?",o:["Dry, flushed skin in anticholinergic toxicity","Tachycardia","Mydriasis","Agitation"],e:"Both cause tachycardia, mydriasis, agitation and hyperthermia. Sympathomimetics cause diaphoresis; anticholinergics cause dry skin and urinary retention."},
+{t:"tox",s:"2",q:"Naloxone in opioid overdose should be titrated to:",o:["Adequate spontaneous respirations","Full alertness","Pupil dilation","Heart rate above 100"],e:"Full reversal can precipitate withdrawal, vomiting and agitation. Watch for re-sedation with long-acting opioids."},
+{t:"tox",s:"2",q:"The definitive treatment for severe lithium toxicity is:",o:["Hemodialysis","Activated charcoal","Fomepizole","Naloxone"],e:"Lithium does not bind charcoal. IV fluids help mild cases; dialysis is used for severe neurotoxicity or renal failure."},
+{t:"tox",s:"2",q:"Calcium oxalate crystals in urine with renal failure and hypocalcemia suggest:",o:["Ethylene glycol","Methanol","Isopropyl alcohol","Lithium"],e:"Ethylene glycol metabolizes to oxalic acid. Treat with fomepizole, bicarbonate and dialysis."},
+{t:"tox",s:"2",q:"First-line treatment for high-altitude pulmonary edema (HAPE) is:",o:["Descent and supplemental oxygen","Furosemide","Ascent to acclimatize","Intubation in all cases"],e:"Nifedipine is an adjunct; a portable hyperbaric bag can be used when descent is impossible."},
+{t:"tox",s:"2",q:"Proper field care of a pit viper bite includes:",o:["Immobilizing the limb near heart level and transporting for antivenom","Applying a tight tourniquet","Incision and suction","Ice packs"],e:"Mark swelling progression. Antivenom (CroFab or Anavip) treats progressive swelling, coagulopathy and systemic signs."},
+{t:"tox",s:"2",q:"Local anesthetic systemic toxicity (e.g., bupivacaine) with cardiovascular collapse is treated with:",o:["20% lipid emulsion 1.5 mL/kg bolus","Calcium only","Naloxone","Flumazenil"],e:"Lipid emulsion acts as a lipid sink. Continue CPR, use smaller epinephrine doses and avoid vasopressin."},
+{t:"tox",s:"2",q:"Persistent SpO2 around 85% despite O2 and chocolate-brown blood suggest methemoglobinemia. Treat with:",o:["Methylene blue 1-2 mg/kg IV","Hydroxocobalamin","Sodium bicarbonate","Dantrolene"],e:"Common causes: dapsone, benzocaine, nitrates. Avoid methylene blue in G6PD deficiency."},
+
+// ===== OBSTETRICS =====
+{t:"ob",s:"r",q:"The loading dose of magnesium sulfate for eclampsia/severe preeclampsia is:",o:["4-6 g IV over 15-20 minutes, then 1-2 g/hour","1 g IV push","10 g IM only","20 g over 24 hours"],e:"Magnesium prevents and treats eclamptic seizures. Monitor reflexes, respirations and urine output."},
+{t:"ob",s:"r",q:"The earliest sign of magnesium toxicity is usually:",o:["Loss of deep tendon reflexes","Cardiac arrest","Hypertension","Seizures"],e:"Reflexes disappear before respiratory depression and cardiac arrest. Treat with calcium gluconate 1 g IV."},
+{t:"ob",s:"r",q:"Painful dark vaginal bleeding with a rigid, tender uterus suggests:",o:["Placental abruption","Placenta previa","Normal labor","Ectopic pregnancy"],e:"Abruption can hide blood loss behind the placenta and cause DIC. Placenta previa is classically painless bright red bleeding."},
+{t:"ob",s:"r",q:"A patient at 32 weeks becomes hypotensive while supine. The first action is:",o:["Left lateral uterine displacement","Trendelenburg position","Immediate cesarean","Give furosemide"],e:"After about 20 weeks, the uterus compresses the IVC and reduces venous return. Displace it left or tilt the patient."},
+{t:"ob",s:"r",q:"Normal fetal heart rate is:",o:["110-160 bpm","60-100 bpm","160-200 bpm","80-120 bpm"],e:"Fetal bradycardia (under 110) and tachycardia (over 160) may signal fetal compromise or maternal fever."},
+{t:"ob",s:"r",q:"Late decelerations indicate:",o:["Uteroplacental insufficiency","Head compression","Cord compression","Normal variant"],e:"The heart rate drop begins after the contraction peak. Reposition left, give O2 and fluids, stop oxytocin and correct hypotension."},
+{t:"ob",s:"1",q:"Variable decelerations are most often caused by:",o:["Umbilical cord compression","Uteroplacental insufficiency","Fetal head compression","Maternal hypoglycemia"],e:"Abrupt V- or U-shaped drops unrelated to contraction timing. Reposition the mother; check for cord prolapse."},
+{t:"ob",s:"1",q:"Early decelerations that mirror contractions are caused by:",o:["Fetal head compression and are benign","Placental insufficiency","Cord prolapse","Maternal hypotension"],e:"Vagal response to head compression; no intervention is needed."},
+{t:"ob",s:"1",q:"The most common cause of postpartum hemorrhage is:",o:["Uterine atony","Retained placenta","Lacerations","Coagulopathy"],e:"The 4 T's: Tone, Trauma, Tissue, Thrombin. Treat atony with fundal massage, oxytocin and TXA."},
+{t:"ob",s:"1",q:"HELLP syndrome consists of:",o:["Hemolysis, Elevated Liver enzymes, Low Platelets","High BP, Edema, Low Lactate, Proteinuria","Hyperglycemia, Elevated Lipids, Low Potassium","Hypotension, Elevated Lactate, Low PaO2"],e:"A severe form of preeclampsia. RUQ or epigastric pain is common; delivery is definitive treatment."},
+{t:"ob",s:"1",q:"First-line maneuvers for shoulder dystocia are:",o:["McRoberts maneuver and suprapubic pressure","Fundal pressure","Pulling hard on the head","Pushing the head back in"],e:"McRoberts flattens the sacrum and suprapubic pressure dislodges the anterior shoulder. Fundal pressure worsens impaction."},
+{t:"ob",s:"1",q:"In late pregnancy, a 'normal' non-pregnant PaCO2 of 40 mmHg suggests:",o:["Developing respiratory failure","Normal pregnancy physiology","Metabolic alkalosis","Improved ventilation"],e:"Pregnancy increases minute ventilation, so normal PaCO2 is about 28-32 mmHg. A value of 40 indicates CO2 retention."},
+{t:"ob",s:"2",q:"In a pregnant trauma patient, which statement is true?",o:["The fetus may be compromised before the mother shows signs of shock","Maternal vitals drop before fetal distress","Pregnancy reduces blood volume","The fetus is protected from hypovolemia"],e:"Increased maternal blood volume (about 40-50%) masks hemorrhage. Blood is shunted away from the uterus. Resuscitating the mother resuscitates the fetus."},
+{t:"ob",s:"2",q:"If a pregnant patient with a fundus at or above the umbilicus arrests, perimortem cesarean should begin by:",o:["About 4 minutes after arrest, aiming for delivery within 5 minutes","30 minutes","Only after ROSC","Never in the field"],e:"Delivery improves maternal resuscitation by relieving aortocaval compression and may save the fetus."},
+{t:"ob",s:"2",q:"Management of a prolapsed umbilical cord includes:",o:["Elevating the presenting part off the cord and positioning knee-chest or Trendelenburg","Pushing the cord back into the uterus","Pulling the cord to deliver faster","Placing the mother supine and flat"],e:"Keep the cord moist and warm, avoid handling it and transport emergently."},
+{t:"ob",s:"2",q:"Sudden hypoxia, hypotension and DIC during or right after delivery suggest:",o:["Amniotic fluid embolism","Placenta previa","Preeclampsia","Shoulder dystocia"],e:"A rare but often fatal event. Care is supportive: airway, ventilation, hemodynamics and blood products."},
+{t:"ob",s:"2",q:"A fundal height at the umbilicus corresponds to about:",o:["20 weeks","12 weeks","28 weeks","36 weeks"],e:"Above about 20 weeks, the fetus may be viable later and aortocaval compression becomes relevant."},
+{t:"ob",s:"2",q:"Sudden tearing abdominal pain and loss of fetal station in a laboring patient with a prior cesarean suggests:",o:["Uterine rupture","Placenta previa","Braxton Hicks","Normal labor"],e:"Uterine rupture is a surgical emergency with risk of maternal hemorrhage and fetal demise."},
+
+// ===== NEONATAL =====
+{t:"neonatal",s:"r",q:"After the initial steps, a newborn is apneic with HR 80. The next step is:",o:["Positive-pressure ventilation","Chest compressions","Epinephrine","Observation"],e:"Begin PPV if apneic/gasping or HR under 100. Effective ventilation is the most important step in neonatal resuscitation."},
+{t:"neonatal",s:"r",q:"Neonatal chest compressions are started when HR is below 60 despite 30 seconds of effective PPV, at a ratio of:",o:["3 compressions to 1 breath","15 to 2","30 to 2","5 to 1"],e:"About 90 compressions and 30 breaths per minute, using 100% O2 once compressions begin."},
+{t:"neonatal",s:"r",q:"At 10 minutes of life, the target preductal SpO2 is:",o:["85-95%","60-65%","100%","70-75%"],e:"Targets rise from 60-65% at 1 minute. Measure preductally on the right hand or wrist."},
+{t:"neonatal",s:"r",q:"For an intubated term newborn, a common ETT depth estimate at the lip is:",o:["Weight in kg + 6 cm","Age in years x 3","Weight in kg x 2","12 cm for all babies"],e:"For example, a 3 kg baby needs about 9 cm. Term babies typically need a 3.5 mm tube."},
+{t:"neonatal",s:"r",q:"Treatment for symptomatic neonatal hypoglycemia is:",o:["D10W 2 mL/kg IV","D50W 1 mL/kg IV","D5W 20 mL/kg","Glucagon 1 mg"],e:"Concentrated dextrose can damage vessels and cause rebound hypoglycemia. Follow with a continuous dextrose infusion."},
+{t:"neonatal",s:"r",q:"A newborn with a congenital heart lesion who worsens as the ductus closes should receive:",o:["Prostaglandin E1 (alprostadil)","Indomethacin","Adenosine","High-dose epinephrine"],e:"PGE1 keeps the ductus arteriosus open. Apnea is a common side effect; be prepared to manage the airway."},
+{t:"neonatal",s:"1",q:"The recommended rate of PPV in neonatal resuscitation is:",o:["40-60 breaths per minute","10-12 breaths per minute","20 breaths per minute","80-100 breaths per minute"],e:"'Breathe, two, three' timing achieves about 40-60 breaths per minute."},
+{t:"neonatal",s:"1",q:"A non-vigorous newborn is delivered through meconium-stained fluid. Current guidance is to:",o:["Begin the initial steps and PPV as needed without routine tracheal suctioning","Always intubate and suction before any breaths","Withhold oxygen","Perform chest compressions first"],e:"Routine intubation for suctioning is no longer recommended. Suction only if the airway is obstructed."},
+{t:"neonatal",s:"1",q:"A newborn under 32 weeks' gestation should be kept warm by:",o:["Placing in a polyethylene bag or wrap without drying the body","Bathing immediately","Only drying with towels","Cooling to 33 C"],e:"Plastic wrap, a radiant warmer, a warm room and a hat reduce heat loss in preterm infants."},
+{t:"neonatal",s:"1",q:"Which is NOT one of the five APGAR components?",o:["Blood pressure","Heart rate","Respiratory effort","Muscle tone"],e:"APGAR: Appearance, Pulse, Grimace, Activity, Respiration. It is assessed at 1 and 5 minutes but doesn't guide initial resuscitation."},
+{t:"neonatal",s:"1",q:"A newborn with gastroschisis should have the exposed bowel:",o:["Covered with a sterile bowel bag or plastic wrap to limit heat and fluid loss","Pushed back into the abdomen","Left exposed to air","Wrapped in dry gauze tightly"],e:"Keep the infant warm, support the bowel to avoid kinking, decompress the stomach and provide IV fluids."},
+{t:"neonatal",s:"2",q:"The neonatal IV epinephrine dose is:",o:["0.01-0.03 mg/kg (0.1 mg/mL)","0.1 mg/kg (1 mg/mL)","1 mg","0.5 mg/kg"],e:"Given IV/IO when HR stays under 60 despite effective PPV and compressions. ETT dosing is higher (0.05-0.1 mg/kg) but less reliable."},
+{t:"neonatal",s:"2",q:"A newborn has excessive drooling, chokes with feeds, and an orogastric tube cannot be passed. Suspect:",o:["Esophageal atresia with tracheoesophageal fistula","Pyloric stenosis","Diaphragmatic hernia","Gastroschisis"],e:"Keep the head elevated, suction the upper pouch continuously and avoid feeding."},
+{t:"neonatal",s:"2",q:"A preductal SpO2 notably higher than postductal SpO2 in a hypoxic newborn suggests:",o:["Persistent pulmonary hypertension with right-to-left ductal shunting","Normal transition","Left-to-right shunting","Methemoglobinemia"],e:"High pulmonary pressure pushes deoxygenated blood across the ductus to the descending aorta. Treat with oxygen, ventilation and (in centers) inhaled nitric oxide."},
+{t:"neonatal",s:"2",q:"A volume bolus for a newborn with suspected hypovolemia is:",o:["10 mL/kg normal saline or O-negative blood","20 mL/kg D10W","50 mL/kg LR","1 mL/kg albumin 25%"],e:"Give over 5-10 minutes and reassess. Consider for pale newborns with poor response to resuscitation and known blood loss."},
+{t:"neonatal",s:"2",q:"A premature infant with grunting, retractions and a 'ground glass' chest X-ray most likely has:",o:["Respiratory distress syndrome (surfactant deficiency)","Transient tachypnea of the newborn","Pneumothorax","Meconium aspiration"],e:"Surfactant deficiency causes alveolar collapse. Treatment includes CPAP and surfactant administration."},
+
+// ===== PEDIATRICS =====
+{t:"peds",s:"r",q:"For a child 1-10 years old, hypotension is a systolic BP below:",o:["70 + (2 x age in years)","90 + age","60 mmHg at any age","100 mmHg"],e:"Hypotension is a late finding in pediatric shock. Tachycardia and delayed capillary refill appear first."},
+{t:"peds",s:"r",q:"The standard pediatric isotonic fluid bolus is:",o:["10-20 mL/kg","5 mL/kg","40 mL/kg","1 L"],e:"Give 20 mL/kg in most cases (10 mL/kg if cardiac dysfunction is suspected) and reassess after each bolus."},
+{t:"peds",s:"r",q:"Using (age/4) + 3.5, the cuffed ETT size for a 4-year-old is:",o:["4.5 mm","5.5 mm","3.5 mm","6.0 mm"],e:"4/4 + 3.5 = 4.5. For uncuffed tubes, use (age/4) + 4. Have a size above and below available."},
+{t:"peds",s:"r",q:"Treatment for moderate croup with stridor at rest includes:",o:["Dexamethasone and nebulized racemic epinephrine","Antibiotics alone","Albuterol and ipratropium","Immediate intubation"],e:"Croup shows a 'steeple sign'. Dexamethasone (0.6 mg/kg) reduces edema; nebulized epinephrine works fast. Observe for rebound."},
+{t:"peds",s:"r",q:"A child with high fever, drooling and tripod positioning should be managed by:",o:["Keeping the child calm, avoiding agitation, and preparing for a difficult airway","Examining the throat with a tongue blade","Lying the child flat for an IV","Giving PO antibiotics"],e:"Suspect epiglottitis. Agitation can cause complete airway obstruction. The airway is best secured in a controlled setting."},
+{t:"peds",s:"r",q:"The initial defibrillation energy for pediatric VF is:",o:["2 J/kg, then 4 J/kg","10 J/kg","200 J","0.5 J/kg"],e:"Subsequent shocks at 4 J/kg or higher, up to 10 J/kg or the adult dose."},
+{t:"peds",s:"1",q:"The most accurate field method to estimate a child's weight for drug dosing is:",o:["A length-based tape (e.g., Broselow)","Parent's guess","Visual estimate","Age-based formula only"],e:"Length-based tapes give color-coded weight estimates, drug doses and equipment sizes."},
+{t:"peds",s:"1",q:"Management of bronchiolitis in infants is mainly:",o:["Supportive care with nasal suctioning, oxygen and high-flow as needed","Routine albuterol","Antibiotics","Systemic steroids"],e:"RSV bronchiolitis responds poorly to bronchodilators and steroids. Suctioning nasal secretions can greatly improve breathing."},
+{t:"peds",s:"1",q:"A child has HR 50 with poor perfusion despite effective oxygenation and ventilation. Next step:",o:["Start CPR","Give adenosine","Observe","Give a fluid bolus only"],e:"Bradycardia with poor perfusion below 60 bpm requires compressions, then epinephrine."},
+{t:"peds",s:"1",q:"The two-rescuer compression-to-ventilation ratio for a child is:",o:["15:2","30:2","3:1","5:1"],e:"30:2 is for single rescuers. 3:1 applies to newborns."},
+{t:"peds",s:"1",q:"The pediatric epinephrine dose in cardiac arrest is:",o:["0.01 mg/kg IV/IO (0.1 mg/mL)","0.1 mg/kg IV","1 mg regardless of weight","0.001 mg/kg"],e:"Maximum single dose is 1 mg, repeated every 3-5 minutes."},
+{t:"peds",s:"2",q:"To align the airway axes in an infant, use:",o:["A shoulder roll","A pillow under the head","Hyperextension of the neck","No positioning"],e:"The large occiput flexes the neck when supine. A shoulder roll keeps the airway in a neutral 'sniffing' alignment."},
+{t:"peds",s:"2",q:"Which finding is most concerning for non-accidental trauma?",o:["Bruising on a non-mobile infant","A knee abrasion in a toddler","Forehead bruise in a walking child","A single shin bruise"],e:"'Those who don't cruise rarely bruise.' Concerning patterns include the torso, ears, neck and inconsistent history."},
+{t:"peds",s:"2",q:"A major risk in pediatric DKA treatment is:",o:["Cerebral edema","Hypernatremia","Hypercalcemia","Respiratory alkalosis"],e:"Avoid rapid fluid shifts, insulin boluses and bicarbonate. Watch for headache, bradycardia and declining mental status."},
+{t:"peds",s:"2",q:"The initial adenosine dose for pediatric SVT is:",o:["0.1 mg/kg rapid IV (max 6 mg)","1 mg/kg","12 mg regardless of weight","0.01 mg/kg"],e:"Second dose is 0.2 mg/kg (max 12 mg). Infant SVT is typically over 220 bpm and child SVT over 180 bpm, with no beat-to-beat variability."},
+{t:"peds",s:"2",q:"The minimum urine output target for a child is about:",o:["1 mL/kg/hour","0.1 mL/kg/hour","5 mL/kg/hour","20 mL/hour regardless of weight"],e:"Adults target 0.5 mL/kg/hr; infants may need 1-2 mL/kg/hr."}
+);
+
+// Flashcards: t = topic id, f = front, b = back
+window.FC = [
+// Transport
+{t:"transport",f:"Boyle's law",b:"P1V1 = P2V2. As pressure falls (ascent), trapped gas expands: ETT cuffs, pneumothorax, bowel, air splints, IV drip chambers."},
+{t:"transport",f:"Dalton's law",b:"Total pressure = sum of partial pressures. Lower barometric pressure at altitude means lower PO2 (hypoxic hypoxia)."},
+{t:"transport",f:"Henry's law",b:"Gas dissolved in liquid is proportional to its partial pressure. Explains decompression sickness and carbonated drinks."},
+{t:"transport",f:"Charles' law vs Gay-Lussac's law",b:"Charles: volume proportional to temperature (constant pressure). Gay-Lussac: pressure proportional to temperature (constant volume), e.g., cold O2 cylinder reads lower."},
+{t:"transport",f:"Graham's law",b:"Gases diffuse from high to low concentration; rate is inversely proportional to the square root of molecular weight."},
+{t:"transport",f:"4 types of hypoxia",b:"Hypoxic (low PO2, altitude), Hypemic/anemic (low carrying capacity, CO, anemia), Stagnant (low flow, shock), Histotoxic (cells can't use O2, cyanide)."},
+{t:"transport",f:"Stages of hypoxia",b:"Indifferent (night vision drops), Compensatory, Disturbance (impaired judgment), Critical (loss of consciousness)."},
+{t:"transport",f:"Inspired PO2 formula",b:"PiO2 = (Pb - 47) x FiO2. At sea level: (760 - 47) x 0.21 = about 150 mmHg."},
+{t:"transport",f:"Stresses of flight",b:"Hypoxia, barometric pressure changes, thermal changes, decreased humidity, noise, vibration, fatigue, gravitational forces, spatial disorientation, fuel vapors."},
+{t:"transport",f:"Helicopter approach safety",b:"Approach only when signaled, from the front within the pilot's view, crouched. Never from the rear (tail rotor) or uphill side."},
+// Airway
+{t:"airway",f:"Succinylcholine dose and key contraindications",b:"1.5 mg/kg IV. Avoid: burns/crush/denervation after 24-72 hr, neuromuscular disease, known hyperkalemia, history of malignant hyperthermia."},
+{t:"airway",f:"Rocuronium",b:"1.0-1.2 mg/kg IV. Onset 45-60 sec, duration 45-70+ min. Reversed by sugammadex."},
+{t:"airway",f:"Ketamine dosing",b:"Induction 1-2 mg/kg IV (reduce in shock). Analgesia 0.1-0.3 mg/kg IV. Preserves airway reflexes and respiratory drive."},
+{t:"airway",f:"Etomidate",b:"0.3 mg/kg IV. Hemodynamically stable. Causes transient adrenal suppression and myoclonus."},
+{t:"airway",f:"Propofol",b:"Induction 1-2 mg/kg. Causes hypotension and myocardial depression. No analgesia."},
+{t:"airway",f:"DOPE mnemonic",b:"Displacement, Obstruction, Pneumothorax, Equipment failure (plus Stacked breaths). For the acutely deteriorating intubated patient."},
+{t:"airway",f:"LEMON assessment",b:"Look externally, Evaluate 3-3-2, Mallampati, Obstruction/Obesity, Neck mobility."},
+{t:"airway",f:"Malignant hyperthermia",b:"Rising ETCO2, tachycardia, masseter rigidity, hyperthermia (late). Treat: stop trigger, dantrolene 2.5 mg/kg, cooling."},
+{t:"airway",f:"ETT cuff pressure",b:"20-30 cm H2O. Recheck with altitude changes."},
+{t:"airway",f:"Surgical airway in children",b:"Needle cricothyrotomy preferred under about 10-12 years old."},
+// Vent
+{t:"vent",f:"Lung-protective settings",b:"Vt 6-8 mL/kg IBW, Pplat under 30 cm H2O, driving pressure under 15, PEEP to support oxygenation."},
+{t:"vent",f:"Ideal body weight",b:"Male: 50 + 2.3 x (inches over 60). Female: 45.5 + 2.3 x (inches over 60)."},
+{t:"vent",f:"Fixing oxygenation vs ventilation",b:"Oxygenation: FiO2 and PEEP. Ventilation (CO2): rate and tidal volume."},
+{t:"vent",f:"High peak pressure, normal plateau",b:"Resistance problem: bronchospasm, secretions, kinked or bitten tube."},
+{t:"vent",f:"High peak AND high plateau pressure",b:"Compliance problem: pneumothorax, mainstem intubation, ARDS, pulmonary edema, abdominal distension, auto-PEEP."},
+{t:"vent",f:"Berlin ARDS severity (P/F ratio)",b:"Mild 200-300, Moderate 100-200, Severe 100 or less (on PEEP of at least 5)."},
+{t:"vent",f:"Auto-PEEP (breath stacking)",b:"Flow does not return to baseline. Treat: disconnect, lower rate, longer expiratory time (1:4+), bronchodilators."},
+{t:"vent",f:"Normal ABG values",b:"pH 7.35-7.45, PaCO2 35-45, HCO3 22-26, PaO2 80-100."},
+{t:"vent",f:"Oxyhemoglobin curve shifts",b:"Right (unload O2): acidosis, hyperthermia, high CO2, high 2,3-DPG. Left: alkalosis, hypothermia, CO, fetal Hgb."},
+{t:"vent",f:"PaCO2-ETCO2 gradient",b:"Normally 2-5 mmHg. Widens with dead space: PE, low cardiac output, high PEEP."},
+// Cardiac
+{t:"cardiac",f:"STEMI territories",b:"Inferior: II, III, aVF (RCA). Lateral: I, aVL, V5-V6 (circumflex). Anterior/septal: V1-V4 (LAD). Posterior: ST depression V1-V3, elevation V7-V9."},
+{t:"cardiac",f:"RV infarct management",b:"Inferior MI + hypotension: check V4R, give fluids, avoid nitrates and diuretics."},
+{t:"cardiac",f:"IABP timing",b:"Inflate at dicrotic notch (aortic valve closure). Deflate just before systole. Benefits: more coronary perfusion, less afterload."},
+{t:"cardiac",f:"IABP migration signs",b:"Too high: lost/weak left radial pulse. Too low: decreased urine output (renal arteries)."},
+{t:"cardiac",f:"LVAD assessment",b:"Pulse may be absent. Use Doppler MAP (goal about 70-90). Check flow, speed, power and PI. Low flow + low PI: hypovolemia."},
+{t:"cardiac",f:"Wellens syndrome",b:"Deep symmetric or biphasic T waves in V2-V3 in pain-free patient. Critical proximal LAD stenosis."},
+{t:"cardiac",f:"De Winter T waves",b:"Upsloping ST depression with tall symmetric precordial T waves. STEMI equivalent (LAD)."},
+{t:"cardiac",f:"Sgarbossa criteria (LBBB)",b:"Concordant ST elevation 1 mm or more, concordant ST depression 1 mm or more in V1-V3, or excessively discordant ST elevation."},
+{t:"cardiac",f:"Beck's triad",b:"Hypotension, JVD, muffled heart sounds: cardiac tamponade. Also pulsus paradoxus and electrical alternans."},
+{t:"cardiac",f:"Aortic dissection targets",b:"HR under 60 first (esmolol/labetalol), then SBP 100-120 with vasodilator if needed."},
+// Shock
+{t:"shock",f:"MAP formula",b:"(SBP + 2 x DBP) / 3. Target 65 or more for most patients."},
+{t:"shock",f:"Hemodynamic normals",b:"CO 4-8 L/min, CI 2.5-4, CVP 2-6, PCWP 8-12, SVR 800-1,200, SvO2 60-80%."},
+{t:"shock",f:"Hypovolemic shock profile",b:"Low CVP, low PCWP, low CO, high SVR."},
+{t:"shock",f:"Cardiogenic shock profile",b:"High PCWP, low CO, high SVR."},
+{t:"shock",f:"Distributive (septic) shock profile",b:"Low SVR, normal-to-high CO early, low/normal filling pressures."},
+{t:"shock",f:"Neurogenic shock",b:"Hypotension + bradycardia + warm, dry skin. Fluids, vasopressors (norepinephrine) and atropine/pacing."},
+{t:"shock",f:"Vasopressor receptor profiles",b:"Norepi: alpha-1 > beta-1. Phenylephrine: pure alpha-1. Epi: alpha + beta-1 + beta-2. Dobutamine: beta-1 (some beta-2). Vasopressin: V1."},
+{t:"shock",f:"Arterial line dampening",b:"Overdamped: falsely low SBP, high DBP. Underdamped: falsely high SBP. Use square-wave test."},
+{t:"shock",f:"Phlebostatic axis",b:"4th ICS, mid-axillary line. Transducer too low reads high; too high reads low."},
+{t:"shock",f:"Sepsis bundle basics",b:"Lactate, cultures, broad-spectrum antibiotics within 1 hour, 30 mL/kg crystalloid for hypotension or lactate of 4+, vasopressors for MAP under 65."},
+// Neuro
+{t:"neuro",f:"Cerebral perfusion pressure",b:"CPP = MAP - ICP. Goal about 60-70 mmHg. Normal ICP 5-15 mmHg."},
+{t:"neuro",f:"Cushing's triad",b:"Hypertension (widened pulse pressure), bradycardia, irregular respirations. Late sign of herniation."},
+{t:"neuro",f:"GCS components",b:"Eyes 1-4, Verbal 1-5, Motor 1-6. Total 3-15. Intubate for GCS 8 or less (trauma)."},
+{t:"neuro",f:"TBI ventilation targets",b:"Normocapnia (PaCO2 35-45). Brief hyperventilation (30-35) only for active herniation. Avoid SpO2 under 90 and SBP under 110."},
+{t:"neuro",f:"Hyperosmolar therapy",b:"Mannitol 0.5-1 g/kg (diuresis, may drop BP) or hypertonic saline (e.g., 3%)."},
+{t:"neuro",f:"Epidural vs subdural",b:"Epidural: arterial (middle meningeal), lucid interval, rapid decline. Subdural: bridging veins, elderly/anticoagulated, slower."},
+{t:"neuro",f:"Stroke BP limits for thrombolysis",b:"Below 185/110 before and below 180/105 after tPA/TNK."},
+{t:"neuro",f:"Spinal cord syndromes",b:"Central: arms > legs. Anterior: motor + pain/temp loss, proprioception kept. Brown-Sequard: ipsilateral motor/proprioception, contralateral pain/temp."},
+{t:"neuro",f:"Autonomic dysreflexia",b:"Injury at T6 or above. Severe HTN, bradycardia, headache. Sit up, remove trigger (bladder, bowel, tight clothing)."},
+{t:"neuro",f:"DI vs SIADH",b:"DI: high urine output, hypernatremia, dilute urine (desmopressin). SIADH: hyponatremia, concentrated urine (fluid restriction)."},
+// Medical
+{t:"medical",f:"Anion gap",b:"Na - (Cl + HCO3). Normal 8-12. High-gap causes (MUDPILES): methanol, uremia, DKA, propylene glycol, isoniazid/iron, lactic acidosis, ethylene glycol, salicylates."},
+{t:"medical",f:"Winter's formula",b:"Expected PaCO2 = 1.5 x HCO3 + 8 (plus or minus 2). Checks respiratory compensation in metabolic acidosis."},
+{t:"medical",f:"DKA treatment order",b:"Fluids first, check K+ (hold insulin if under 3.3), insulin 0.1 unit/kg/hr, add dextrose at glucose about 250, treat until gap closes."},
+{t:"medical",f:"Hyperkalemia treatment",b:"Stabilize: calcium. Shift: insulin + dextrose, albuterol, bicarb (if acidotic). Remove: diuretics, binders, dialysis."},
+{t:"medical",f:"Serum osmolality",b:"2(Na) + glucose/18 + BUN/2.8. Normal 275-295."},
+{t:"medical",f:"Adrenal crisis",b:"Refractory hypotension, hyponatremia, hyperkalemia, hypoglycemia. Hydrocortisone 100 mg IV."},
+{t:"medical",f:"Thyroid storm vs myxedema coma",b:"Storm: fever, tachycardia, agitation; propranolol, PTU, then iodine, steroids. Myxedema: hypothermia, bradycardia, hyponatremia; IV levothyroxine + hydrocortisone."},
+{t:"medical",f:"Sodium correction limit",b:"No more than 8-10 mEq/L in 24 hr for chronic hyponatremia (osmotic demyelination risk)."},
+{t:"medical",f:"Calcium and magnesium",b:"Low Ca: Chvostek, Trousseau, long QT. High Mg: lost reflexes, respiratory depression; treat with calcium."},
+{t:"medical",f:"DIC labs",b:"Low platelets, low fibrinogen, high D-dimer, prolonged PT/PTT."},
+// Trauma
+{t:"trauma",f:"Parkland formula",b:"4 mL x kg x %TBSA (LR) over 24 hr; half in first 8 hr from burn time. Titrate to UO 0.5 mL/kg/hr adults, 1 mL/kg/hr kids."},
+{t:"trauma",f:"Adult rule of nines",b:"Head 9, each arm 9, anterior trunk 18, posterior trunk 18, each leg 18, perineum 1."},
+{t:"trauma",f:"TXA in trauma",b:"1 g IV over 10 min within 3 hr of injury, then 1 g over 8 hr."},
+{t:"trauma",f:"Hemorrhage classes",b:"I: under 15%. II: 15-30% (tachycardia, narrow pulse pressure). III: 30-40% (hypotension, confusion). IV: over 40%."},
+{t:"trauma",f:"Lethal triad",b:"Hypothermia, acidosis, coagulopathy (plus hypocalcemia = lethal diamond)."},
+{t:"trauma",f:"Massive transfusion",b:"1:1:1 plasma:platelets:RBCs (or whole blood). Give calcium; keep warm."},
+{t:"trauma",f:"Needle decompression sites",b:"Adults: 4th/5th ICS anterior to mid-axillary line (ATLS). Alternative: 2nd ICS mid-clavicular line."},
+{t:"trauma",f:"Massive hemothorax / thoracotomy criteria",b:"1,500 mL initial output or 200 mL/hr for 2-4 hours."},
+{t:"trauma",f:"Inhalation injury red flags",b:"Hoarseness, stridor, carbonaceous sputum, facial burns, singed nasal hair, enclosed-space fire. Intubate early."},
+{t:"trauma",f:"Compartment syndrome",b:"Pain out of proportion and with passive stretch (early). Pulselessness and paralysis are late."},
+// Tox
+{t:"tox",f:"TCA overdose",b:"Wide QRS, terminal R in aVR, seizures, hypotension. Sodium bicarbonate 1-2 mEq/kg."},
+{t:"tox",f:"Cholinergic toxidrome",b:"DUMBELS/SLUDGE + bradycardia, bronchorrhea. Atropine to dry secretions; pralidoxime for organophosphates."},
+{t:"tox",f:"Anticholinergic toxidrome",b:"Hot, dry, red, blind (mydriasis), mad, full bladder. Physostigmine in selected cases; benzodiazepines."},
+{t:"tox",f:"Sympathomimetic toxidrome",b:"Tachycardia, HTN, hyperthermia, mydriasis, DIAPHORESIS. Benzodiazepines first-line."},
+{t:"tox",f:"Carbon monoxide",b:"SpO2 falsely normal. 100% O2 (half-life about 5 hr room air, about 1-1.5 hr on 100% O2). Consider hyperbaric therapy."},
+{t:"tox",f:"Cyanide",b:"Histotoxic hypoxia, high lactate, high venous O2. Hydroxocobalamin 5 g IV."},
+{t:"tox",f:"Key antidotes",b:"Acetaminophen: NAC. Methanol/ethylene glycol: fomepizole. Digoxin: DigiFab. Opioids: naloxone. Methemoglobin: methylene blue. LAST: lipid emulsion."},
+{t:"tox",f:"Beta-blocker / CCB overdose",b:"Calcium, high-dose insulin euglycemia (1 unit/kg/hr), glucagon (BB), vasopressors, pacing, lipid rescue."},
+{t:"tox",f:"Serotonin syndrome vs NMS",b:"SS: rapid onset, clonus, hyperreflexia (serotonergic drugs). NMS: days, lead-pipe rigidity, bradyreflexia (antipsychotics)."},
+{t:"tox",f:"Hypothermia stages",b:"Mild 32-35 C, moderate 28-32 C, severe under 28 C. Handle gently (VF risk); Osborn J waves."},
+// OB
+{t:"ob",f:"Magnesium for eclampsia",b:"4-6 g IV load, 1-2 g/hr. Toxicity: lost DTRs, then respiratory depression. Antidote: calcium gluconate 1 g."},
+{t:"ob",f:"Abruption vs previa",b:"Abruption: painful, dark bleeding, rigid uterus, DIC risk. Previa: painless bright red bleeding; no vaginal exams."},
+{t:"ob",f:"Fetal decelerations (VEAL CHOP)",b:"Variable = Cord compression. Early = Head compression. Accelerations = OK. Late = Placental insufficiency."},
+{t:"ob",f:"Normal fetal heart rate",b:"110-160 bpm."},
+{t:"ob",f:"Supine hypotensive syndrome",b:"After about 20 weeks; uterus compresses IVC. Left lateral uterine displacement."},
+{t:"ob",f:"Physiology of pregnancy",b:"Blood volume up 40-50%, HR up 10-20, PaCO2 about 30, dilutional anemia, increased aspiration risk."},
+{t:"ob",f:"Postpartum hemorrhage (4 T's)",b:"Tone (most common), Trauma, Tissue, Thrombin. Fundal massage, oxytocin, TXA."},
+{t:"ob",f:"HELLP",b:"Hemolysis, Elevated Liver enzymes, Low Platelets. RUQ/epigastric pain. Delivery is definitive."},
+{t:"ob",f:"Perimortem cesarean",b:"Fundus at/above umbilicus: start by 4 min of arrest, deliver within 5 min."},
+{t:"ob",f:"Shoulder dystocia",b:"McRoberts maneuver + suprapubic pressure. Never fundal pressure."},
+// Neonatal
+{t:"neonatal",f:"NRP key decision points",b:"HR under 100 or apnea: PPV. HR under 60 after 30 sec effective PPV: compressions 3:1 with 100% O2. HR under 60 still: epinephrine."},
+{t:"neonatal",f:"Preductal SpO2 targets",b:"1 min 60-65%, 2 min 65-70%, 3 min 70-75%, 4 min 75-80%, 5 min 80-85%, 10 min 85-95%."},
+{t:"neonatal",f:"Neonatal ETT",b:"Term: 3.5 mm. Depth at lip: weight (kg) + 6 cm."},
+{t:"neonatal",f:"Neonatal epinephrine",b:"IV/IO 0.01-0.03 mg/kg (0.1 mg/mL). ETT 0.05-0.1 mg/kg."},
+{t:"neonatal",f:"Neonatal hypoglycemia",b:"D10W 2 mL/kg IV, then maintenance dextrose infusion."},
+{t:"neonatal",f:"Ductal-dependent lesions",b:"Prostaglandin E1 keeps ductus open. Watch for apnea, fever, hypotension."},
+{t:"neonatal",f:"Congenital diaphragmatic hernia",b:"Scaphoid abdomen, bowel sounds in chest. Avoid BVM, intubate, OG tube to decompress."},
+{t:"neonatal",f:"Gastroschisis vs omphalocele",b:"Gastroschisis: no sac, right of umbilicus. Omphalocele: covered by sac. Both: sterile bowel bag, warmth, fluids."},
+{t:"neonatal",f:"PPHN",b:"Preductal SpO2 higher than postductal. Oxygen, avoid acidosis, inhaled nitric oxide."},
+{t:"neonatal",f:"Neonatal volume bolus",b:"10 mL/kg NS or O-negative blood over 5-10 minutes."},
+// Peds
+{t:"peds",f:"Pediatric hypotension",b:"Under 70 + (2 x age) for ages 1-10. Neonates under 60; infants under 70; 10+ years under 90."},
+{t:"peds",f:"Pediatric ETT size",b:"Cuffed: (age/4) + 3.5. Uncuffed: (age/4) + 4. Depth: about 3 x tube size."},
+{t:"peds",f:"Pediatric fluid bolus",b:"10-20 mL/kg isotonic crystalloid, reassess after each."},
+{t:"peds",f:"Pediatric defibrillation and cardioversion",b:"Defib: 2 J/kg, then 4 J/kg (max 10 J/kg). Sync cardioversion: 0.5-1 J/kg, then 2 J/kg."},
+{t:"peds",f:"Pediatric arrest drugs",b:"Epinephrine 0.01 mg/kg (max 1 mg). Amiodarone 5 mg/kg. Adenosine 0.1 mg/kg (max 6 mg), then 0.2 mg/kg (max 12)."},
+{t:"peds",f:"Croup vs epiglottitis",b:"Croup: barky cough, steeple sign; dexamethasone + racemic epi. Epiglottitis: drooling, tripod, toxic; keep calm, controlled airway."},
+{t:"peds",f:"Pediatric airway anatomy",b:"Large occiput (shoulder roll), large tongue, high anterior larynx, floppy epiglottis, short trachea."},
+{t:"peds",f:"Pediatric CPR ratios",b:"Single rescuer 30:2. Two rescuers 15:2. Newborn 3:1."},
+{t:"peds",f:"Pediatric DKA cautions",b:"Cerebral edema risk: no insulin bolus, avoid bicarbonate and rapid fluid shifts."},
+{t:"peds",f:"Non-accidental trauma red flags",b:"Bruises in non-mobile infants, TEN-4 (torso, ears, neck in under 4 yrs; any bruise under 4 months), inconsistent history, delay in care."}
+];
+
+</script>
+<script>
+(function(){
+"use strict";
+var TOPICS = [
+  {id:"transport", name:"Transport, Safety & Flight Physiology"},
+  {id:"airway",    name:"Airway, RSI & Pharmacology"},
+  {id:"vent",      name:"Respiratory & Ventilator Management"},
+  {id:"cardiac",   name:"Cardiac & Mechanical Support Devices"},
+  {id:"shock",     name:"Shock, Resuscitation & Hemodynamics"},
+  {id:"neuro",     name:"Neurological Emergencies"},
+  {id:"medical",   name:"Medical, Endocrine & Labs"},
+  {id:"trauma",    name:"Trauma & Burns"},
+  {id:"tox",       name:"Toxicology & Environmental"},
+  {id:"ob",        name:"Obstetrics"},
+  {id:"neonatal",  name:"Neonatal"},
+  {id:"peds",      name:"Pediatrics"}
+];
+var TNAME = {}; TOPICS.forEach(function(t){ TNAME[t.id] = t.name; });
+var QB = window.QB || [], FC = window.FC || [];
+QB.forEach(function(q,i){ q.id = i; });
+var TEST_MIN = 110, LET = "ABCD";
+
+/* ---------- helpers ---------- */
+var store = {
+  get:function(k,d){ try{ var v = localStorage.getItem("ccp_"+k); return v ? JSON.parse(v) : d; }catch(e){ return d; } },
+  set:function(k,v){ try{ localStorage.setItem("ccp_"+k, JSON.stringify(v)); }catch(e){} },
+  del:function(k){ try{ localStorage.removeItem("ccp_"+k); }catch(e){} }
+};
+function esc(s){ return String(s).replace(/[&<>"]/g,function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
+function shuffle(a){ a = a.slice(); for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; } return a; }
+function pct(c,n){ return n ? Math.round(c/n*100) : 0; }
+function fmtTime(s){ s=Math.max(0,s|0); var m=Math.floor(s/60), x=s%60; return m+":"+(x<10?"0":"")+x; }
+function level(p){ return p>=80 ? "ok" : p>=70 ? "warn" : "bad"; }
+function levelName(p){ return p>=80 ? "Strong" : p>=70 ? "Fair" : "Weak"; }
+
+var S = { tab: store.get("tab","review"), rv:null, fc:null, ex:store.get("ex",null), res:null, rvInc:store.get("rvInc",false), fcHide:false, fcTopic:"all" };
+var view = document.getElementById("view");
+
+/* ---------- theme ---------- */
+(function(){
+  var t = store.get("theme",null);
+  if(t) document.documentElement.setAttribute("data-theme",t);
+  document.getElementById("themeBtn").addEventListener("click",function(){
+    var cur = document.documentElement.getAttribute("data-theme");
+    if(!cur){ cur = window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"; }
+    var nx = cur==="dark" ? "light" : "dark";
+    document.documentElement.setAttribute("data-theme",nx); store.set("theme",nx);
+  });
+})();
+
+/* ---------- options renderer ---------- */
+function optsHTML(q, perm, chosen, reveal, act){
+  return perm.map(function(oi,k){
+    var cls = "opt", tag = "";
+    if(reveal){
+      if(oi===0){ cls+=" ok"; tag='<span class="tag">Correct</span>'; }
+      else if(oi===chosen){ cls+=" bad"; tag='<span class="tag">Your answer</span>'; }
+      else cls+=" dim";
+    } else if(oi===chosen) cls+=" sel";
+    return '<button class="'+cls+'" data-act="'+act+'" data-o="'+oi+'"'+(reveal?" disabled":"")+'><span class="ltr">'+LET[k]+'</span><span>'+esc(q.o[oi])+'</span>'+tag+'</button>';
+  }).join("");
+}
+
+/* ================= REVIEW ================= */
+function rvPool(topic){
+  return QB.filter(function(q){ return (topic==="all"||q.t===topic) && (q.s==="r"||S.rvInc); });
+}
+function rvStart(topic){
+  var list = rvPool(topic);
+  list = topic==="all" ? shuffle(list) : list;
+  S.rv = { topic:topic, list:list.map(function(q){ return {q:q, perm:shuffle([0,1,2,3])}; }), i:0, ans:{}, done:false };
+}
+function rvHome(){
+  var best = store.get("rvBest",{});
+  var h = '<h1>Review by topic</h1><p class="lead">Pick a topic and work through questions one at a time. The answer and explanation appear as soon as you choose.</p>';
+  h += '<div class="spread" style="margin-bottom:14px"><label class="switch"><input type="checkbox" data-act="rv-inc"'+(S.rvInc?" checked":"")+'> Also include mock-test questions (more practice, but spoils the tests)</label></div>';
+  h += '<div class="grid">';
+  TOPICS.forEach(function(t,i){
+    var n = rvPool(t.id).length, b = best[t.id];
+    h += '<button class="card topic" data-act="rv-start" data-topic="'+t.id+'"><span class="num">TOPIC '+(i+1<10?"0":"")+(i+1)+'</span><h3>'+esc(t.name)+'</h3><div class="meta"><span>'+n+' questions</span>'+(b!=null?'<span class="chip '+level(b)+'">Best '+b+'%</span>':'')+'</div></button>';
+  });
+  var all = rvPool("all").length, ba = best.all;
+  h += '<button class="card topic mixed" data-act="rv-start" data-topic="all"><span class="num">MIXED</span><h3>All topics, shuffled</h3><div class="meta"><span>'+all+' questions</span>'+(ba!=null?'<span class="chip '+level(ba)+'">Best '+ba+'%</span>':'')+'</div></button>';
+  h += '</div>';
+  return h;
+}
+function rvQuestion(){
+  var r = S.rv, n = r.list.length;
+  if(r.done) return rvEnd();
+  var it = r.list[r.i], ch = r.ans[r.i], rev = ch!==undefined;
+  var answered = Object.keys(r.ans).length, right = 0;
+  Object.keys(r.ans).forEach(function(k){ if(r.ans[k]===0) right++; });
+  var h = '<div class="spread" style="margin-bottom:12px"><button class="btn ghost sm" data-act="rv-home">&larr; Topics</button><span class="chip acc">'+esc(r.topic==="all"?"All topics":TNAME[r.topic])+'</span></div>';
+  h += '<div class="card pad"><div class="qhead"><span class="muted small"><b>Question '+(r.i+1)+'</b> of '+n+(r.topic==="all"?' &middot; '+esc(TNAME[it.q.t]):'')+'</span><span class="chip '+(answered?level(pct(right,answered)):"")+'">'+right+' / '+answered+' correct</span></div>';
+  h += '<div class="progress"><i style="width:'+pct(answered,n)+'%"></i></div>';
+  h += '<p class="stem">'+esc(it.q.q)+'</p><div class="opts">'+optsHTML(it.q,it.perm,ch,rev,"rv-pick")+'</div>';
+  if(rev){
+    var good = ch===0;
+    h += '<div class="explain'+(good?"":" wrong")+'"><b>'+(good?"Correct.":"Not quite. The answer is: "+esc(it.q.o[0]))+'</b>'+esc(it.q.e)+'</div>';
+  }
+  h += '<div class="navrow"><button class="btn" data-act="rv-prev"'+(r.i===0?" disabled":"")+'>&larr; Previous</button>';
+  h += (r.i===n-1) ? '<button class="btn primary" data-act="rv-finish"'+(rev?"":" disabled")+'>See results</button>' : '<button class="btn primary" data-act="rv-next">Next &rarr;</button>';
+  h += '</div></div><p class="hint" style="margin-top:12px">Tip: press A-D (or 1-4) to answer, arrow keys to move.</p>';
+  return h;
+}
+function rvEnd(){
+  var r = S.rv, n = r.list.length, right = 0, missed = [];
+  r.list.forEach(function(it,i){ if(r.ans[i]===0) right++; else missed.push({it:it,ch:r.ans[i]}); });
+  var p = pct(right,n);
+  var best = store.get("rvBest",{}); if(best[r.topic]==null || p>best[r.topic]){ best[r.topic]=p; store.set("rvBest",best); }
+  var h = '<div class="card pad"><div class="hero"><div class="ring" style="--p:'+p+';--rc:var(--'+(level(p)==="ok"?"ok":level(p)==="warn"?"warn":"bad")+')"><div><div><b>'+p+'%</b><br><span>'+right+' / '+n+'</span></div></div></div><div><h2>'+esc(r.topic==="all"?"All topics":TNAME[r.topic])+'</h2><p class="lead">'+(p>=80?"Strong work. Try the flashcards or a mock test next.":p>=70?"Solid, with a few gaps. Re-read the explanations below.":"This topic needs more study. Review the missed questions and flashcards.")+'</p><div class="row"><button class="btn primary" data-act="rv-start" data-topic="'+r.topic+'">Retry topic</button>'+(r.topic!=="all"?'<button class="btn" data-act="go-fc" data-topic="'+r.topic+'">Flashcards for this topic</button>':'')+'<button class="btn ghost" data-act="rv-home">All topics</button></div></div></div></div>';
+  if(missed.length){
+    h += '<section class="card pad" style="margin-top:18px"><h3 class="sec-h">Missed questions ('+missed.length+')</h3>';
+    missed.forEach(function(m){ h += reviewItem(m.it.q, m.ch, null); });
+    h += '</section>';
+  }
+  return h;
+}
+
+/* ================= FLASHCARDS ================= */
+function fcBuild(topic){
+  var known = store.get("fcKnown",[]), ks = {}; known.forEach(function(i){ ks[i]=1; });
+  var deck = [];
+  FC.forEach(function(c,i){ if((topic==="all"||c.t===topic) && !(S.fcHide && ks[i])) deck.push(i); });
+  S.fcTopic = topic;
+  S.fc = { deck:deck, i:0, flip:false };
+}
+function fcView(){
+  if(!S.fc) fcBuild(S.fcTopic);
+  var f = S.fc, known = store.get("fcKnown",[]), ks = {}; known.forEach(function(i){ ks[i]=1; });
+  var inTopic = FC.filter(function(c){ return S.fcTopic==="all"||c.t===S.fcTopic; });
+  var kCount = 0; FC.forEach(function(c,i){ if((S.fcTopic==="all"||c.t===S.fcTopic) && ks[i]) kCount++; });
+  var h = '<h1>Flashcards</h1><p class="lead">High-yield facts, formulas and doses. Tap the card to flip it. Mark cards you know to focus on the rest.</p>';
+  h += '<div class="chips"><button class="pill'+(S.fcTopic==="all"?" on":"")+'" data-act="fc-topic" data-topic="all">All ('+FC.length+')</button>';
+  TOPICS.forEach(function(t){ var c = FC.filter(function(x){return x.t===t.id;}).length; h += '<button class="pill'+(S.fcTopic===t.id?" on":"")+'" data-act="fc-topic" data-topic="'+t.id+'">'+esc(t.name)+' ('+c+')</button>'; });
+  h += '</div>';
+  h += '<div class="spread" style="margin-top:6px"><span class="muted small">Known: <b>'+kCount+'</b> of '+inTopic.length+'</span><label class="switch"><input type="checkbox" data-act="fc-hide"'+(S.fcHide?" checked":"")+'> Hide cards I know</label></div>';
+  if(!f.deck.length){
+    h += '<div class="card pad" style="margin-top:16px;text-align:center"><h3>Nice, you know every card here.</h3><p class="lead">Turn off "Hide cards I know" or reset to study them again.</p><button class="btn" data-act="fc-reset">Reset known cards for this topic</button></div>';
+    return h;
+  }
+  var ci = f.deck[f.i], c = FC[ci];
+  h += '<div class="fcwrap"><div class="fc'+(f.flip?" flipped":"")+'" data-act="fc-flip" tabindex="0" role="button" aria-label="Flip card"><div class="fc-in">';
+  h += '<div class="face front"><div class="lbl"><span>'+esc(TNAME[c.t])+'</span><span>'+(f.i+1)+' / '+f.deck.length+'</span></div><div class="txt">'+esc(c.f)+'</div><div class="hint">Tap to reveal</div></div>';
+  h += '<div class="face back"><div class="lbl"><span>'+esc(c.f)+'</span><span>'+(f.i+1)+' / '+f.deck.length+'</span></div><div class="txt">'+esc(c.b)+'</div></div>';
+  h += '</div></div></div>';
+  h += '<div class="spread"><div class="row"><button class="btn" data-act="fc-prev"'+(f.i===0?" disabled":"")+'>&larr; Prev</button><button class="btn primary" data-act="fc-flip">Flip</button><button class="btn" data-act="fc-next"'+(f.i===f.deck.length-1?" disabled":"")+'>Next &rarr;</button></div>';
+  h += '<div class="row"><button class="btn known-btn'+(ks[ci]?" on":"")+'" data-act="fc-known">'+(ks[ci]?"&#10003; Known":"Mark as known")+'</button><button class="btn ghost" data-act="fc-shuffle">Shuffle</button></div></div>';
+  h += '<p class="hint" style="margin-top:14px">Keyboard: Space to flip, arrow keys to move, K to mark known.</p>';
+  return h;
+}
+
+/* ================= MOCK TESTS ================= */
+function testQs(n){ return QB.filter(function(q){ return q.s===String(n); }); }
+function exStart(n, timed){
+  var order = shuffle(testQs(n)).map(function(q){ return q.id; });
+  var perms = {}; order.forEach(function(id){ perms[id] = shuffle([0,1,2,3]); });
+  S.ex = { n:n, order:order, perms:perms, ans:{}, flags:{}, i:0, timed:timed, remain:TEST_MIN*60, nav:false, confirm:false };
+  S.res = null; exSave();
+}
+function exSave(){ if(S.ex) store.set("ex",S.ex); else store.del("ex"); }
+function testsHome(){
+  var hist = store.get("hist",{}), timed = store.get("timed",true);
+  var h = '<h1>Mock tests</h1><p class="lead">Two independent 100-question exams covering all 12 topic areas, weighted toward airway, cardiac, respiratory and trauma like the real exam. Answers stay hidden until you submit; then you get a topic-by-topic analysis of where you are weak.</p>';
+  h += '<div class="spread" style="margin-bottom:14px"><label class="switch"><input type="checkbox" data-act="ex-timed"'+(timed?" checked":"")+'> Timed ('+TEST_MIN+' minutes, about the real exam pace)</label></div>';
+  h += '<div class="tests">';
+  [1,2].forEach(function(n){
+    var hs = hist[n] || [], last = hs[hs.length-1], best = hs.length ? Math.max.apply(null,hs.map(function(x){return x.p;})) : null;
+    var inprog = S.ex && S.ex.n===n;
+    h += '<div class="card pad tcard"><div class="spread"><h2>Mock Test '+n+'</h2>'+(inprog?'<span class="chip warn">In progress</span>':'')+'</div>';
+    h += '<div class="stats"><div class="stat"><b>100</b><span>Questions</span></div><div class="stat"><b>'+(best!=null?best+"%":"&ndash;")+'</b><span>Best</span></div><div class="stat"><b>'+(last?last.p+"%":"&ndash;")+'</b><span>Last</span></div><div class="stat"><b>'+hs.length+'</b><span>Attempts</span></div></div>';
+    if(inprog){
+      var a = Object.keys(S.ex.ans).length;
+      h += '<p class="muted small">'+a+' of 100 answered'+(S.ex.timed?' &middot; '+fmtTime(S.ex.remain)+' left':'')+'</p><div class="row"><button class="btn primary" data-act="ex-resume">Resume</button><button class="btn ghost" data-act="ex-discard">Discard</button></div>';
+    } else {
+      h += '<div class="row"><button class="btn primary" data-act="ex-start" data-n="'+n+'"'+(S.ex?" disabled title=\"Finish or discard the test in progress first\"":"")+'>Start test</button>'+(store.get("last"+n,null)?'<button class="btn" data-act="ex-lastres" data-n="'+n+'">Last results</button>':'')+'</div>';
+    }
+    h += '</div>';
+  });
+  h += '</div>';
+  // blueprint
+  var t1 = testQs(1);
+  h += '<section class="card pad" style="margin-top:18px"><h3 class="sec-h">Questions per topic (each test)</h3><div class="bars">';
+  TOPICS.forEach(function(t){ var c = t1.filter(function(q){return q.t===t.id;}).length; h += '<div class="bar"><span class="name">'+esc(t.name)+'</span><span class="track"><i class="fill-ok" style="width:'+(c/12*100)+'%;background:var(--sel)"></i></span><span class="val">'+c+'</span></div>'; });
+  h += '</div><p class="muted small" style="margin-top:14px">For reference, the IBSC CCP-C exam has 135 items (110 scored, 25 unscored pretest) in 2.5 hours. A score of 75% or better on these mocks is a good sign you are ready.</p></section>';
+  return h;
+}
+function examView(){
+  var e = S.ex, id = e.order[e.i], q = QB[id], ch = e.ans[id], answered = Object.keys(e.ans).length, un = 100-answered;
+  var h = '<div class="exbar"><div class="spread"><div class="row"><b>Mock Test '+e.n+'</b><span class="muted small">'+answered+'/100 answered</span></div><div class="row">'+(e.timed?'<span class="timer'+(e.remain<600?" low":"")+'" id="timer">'+fmtTime(e.remain)+'</span>':'<span class="muted small">Untimed</span>')+'<button class="btn sm" data-act="ex-nav">'+(e.nav?"Hide":"All")+' questions</button><button class="btn sm primary" data-act="ex-submit">Submit</button></div></div>';
+  if(e.nav){
+    h += '<div class="navgrid">';
+    e.order.forEach(function(qid,k){ h += '<button data-act="ex-go" data-i="'+k+'" class="'+(e.ans[qid]!==undefined?"ans ":"")+(e.flags[qid]?"flag ":"")+(k===e.i?"cur":"")+'">'+(k+1)+'</button>'; });
+    h += '</div><div class="legend"><span><i style="background:var(--sel)"></i>Answered</span><span><i style="background:var(--warn);border-radius:50%"></i>Flagged</span><span><i style="border:2px solid var(--accent)"></i>Current</span></div>';
+  }
+  h += '</div>';
+  if(e.confirm){
+    var fl = Object.keys(e.flags).filter(function(k){return e.flags[k];}).length;
+    h += '<div class="card pad confirm"><h3>Submit Mock Test '+e.n+'?</h3><p class="lead">'+(un?'<b>'+un+' unanswered</b> question'+(un>1?"s":"")+' will be marked wrong. ':'All questions answered. ')+(fl?fl+' flagged for review. ':'')+'You cannot change answers after submitting.</p><div class="row"><button class="btn primary" data-act="ex-confirm">Yes, submit and see analysis</button><button class="btn" data-act="ex-cancel">Keep working</button></div></div>';
+  }
+  h += '<div class="card pad"><div class="qhead"><span class="muted small"><b>Question '+(e.i+1)+'</b> of 100</span><button class="btn sm flagbtn'+(e.flags[id]?" on":"")+'" data-act="ex-flag">'+(e.flags[id]?"&#9873; Flagged":"&#9872; Flag for review")+'</button></div>';
+  h += '<div class="progress"><i style="width:'+answered+'%"></i></div>';
+  h += '<p class="stem">'+esc(q.q)+'</p><div class="opts">'+optsHTML(q,e.perms[id],ch,false,"ex-pick")+'</div>';
+  h += '<div class="navrow"><button class="btn" data-act="ex-prev"'+(e.i===0?" disabled":"")+'>&larr; Previous</button>'+(e.i===99?'<button class="btn primary" data-act="ex-submit">Finish &amp; submit</button>':'<button class="btn primary" data-act="ex-next">Next &rarr;</button>')+'</div></div>';
+  h += '<p class="hint" style="margin-top:12px">Answers are revealed after you submit. Keyboard: A-D to answer, arrows to move, F to flag.</p>';
+  return h;
+}
+function grade(e){
+  var per = {}, c = 0; TOPICS.forEach(function(t){ per[t.id] = {c:0,n:0}; });
+  e.order.forEach(function(id){ var q = QB[id]; per[q.t].n++; if(e.ans[id]===0){ per[q.t].c++; c++; } });
+  return {c:c, per:per};
+}
+function exSubmit(){
+  var e = S.ex, g = grade(e), p = pct(g.c, e.order.length);
+  var hist = store.get("hist",{}); (hist[e.n] = hist[e.n] || []).push({p:p, d:Date.now()}); store.set("hist",hist);
+  var used = e.timed ? TEST_MIN*60 - e.remain : null;
+  S.res = { e:e, g:g, used:used, filter:"wrong" };
+  store.set("last"+e.n, {e:e, used:used});
+  S.ex = null; exSave();
+}
+function resultsView(){
+  var r = S.res, e = r.e, g = r.g, n = e.order.length, p = pct(g.c,n), lv = level(p);
+  var msg = p>=75 ? "You are in a good range. Keep sharpening your weaker areas below." : p>=65 ? "Borderline. Focus your study on the weak topics below before test day." : "Not exam-ready yet. Use the focus list below to target study, then retake.";
+  var h = '<div class="spread" style="margin-bottom:12px"><button class="btn ghost sm" data-act="tests-home">&larr; Mock tests</button><span class="chip acc">Mock Test '+e.n+' results</span></div>';
+  h += '<div class="card pad"><div class="hero"><div class="ring" style="--p:'+p+';--rc:var(--'+lv+')"><div><div><b>'+p+'%</b><br><span>'+g.c+' / '+n+'</span></div></div></div><div><h2>'+(p>=75?"Exam-ready range":p>=65?"Borderline":"Needs more work")+'</h2><p class="lead">'+msg+'</p><div class="row small muted">'+(r.used!=null?'<span>Time used: <b>'+fmtTime(r.used)+'</b></span>':'<span>Untimed attempt</span>')+'<span>&middot; Unanswered: <b>'+(n-Object.keys(e.ans).length)+'</b></span></div></div></div></div>';
+  // topic breakdown
+  var rows = TOPICS.map(function(t){ var x = g.per[t.id]; return {t:t, c:x.c, n:x.n, p:pct(x.c,x.n)}; }).filter(function(x){return x.n;});
+  rows.sort(function(a,b){ return a.p-b.p || b.n-a.n; });
+  h += '<section class="card pad"><h3 class="sec-h">Performance by topic</h3><div class="bars">';
+  rows.forEach(function(x){ h += '<div class="bar"><span class="name">'+esc(x.t.name)+' <span class="chip '+level(x.p)+'" style="margin-left:6px">'+levelName(x.p)+'</span></span><span class="track"><i class="fill-'+level(x.p)+'" style="width:'+Math.max(x.p,2)+'%"></i></span><span class="val">'+x.c+'/'+x.n+' &middot; '+x.p+'%</span></div>'; });
+  h += '</div><div class="legend"><span><i class="fill-ok"></i>Strong (80%+)</span><span><i class="fill-warn"></i>Fair (70-79%)</span><span><i class="fill-bad"></i>Weak (under 70%)</span></div></section>';
+  var weak = rows.filter(function(x){ return x.p<70; });
+  h += '<section class="card pad focus" style="border-left-color:var(--'+(weak.length?"bad":"ok")+')"><h3 class="sec-h">'+(weak.length?"Your focus areas":"No weak topics")+'</h3>';
+  if(weak.length){
+    h += '<p class="muted small" style="margin-top:-6px">Ordered from weakest. Study these before retaking.</p>';
+    weak.forEach(function(x){ h += '<div class="focus-item"><div><b>'+esc(x.t.name)+'</b><div class="muted small">'+x.c+' of '+x.n+' correct ('+x.p+'%)</div></div><div class="row"><button class="btn sm" data-act="go-rv" data-topic="'+x.t.id+'">Review questions</button><button class="btn sm" data-act="go-fc" data-topic="'+x.t.id+'">Flashcards</button></div></div>'; });
+  } else {
+    h += '<p class="lead" style="margin:0">Every topic scored 70% or better. Try the other mock test, or review the questions you missed below.</p>';
+  }
+  h += '</section>';
+  // answer review
+  var counts = {wrong:0, flag:0, all:n, skip:0};
+  e.order.forEach(function(id){ if(e.ans[id]!==0) counts.wrong++; if(e.flags[id]) counts.flag++; if(e.ans[id]===undefined) counts.skip++; });
+  h += '<section class="card pad"><div class="spread" style="margin-bottom:6px"><h3 class="sec-h" style="margin:0">Answer review</h3><div class="chips" style="margin:0;padding:0">';
+  [["wrong","Incorrect"],["flag","Flagged"],["skip","Unanswered"],["all","All"]].forEach(function(f){ h += '<button class="pill'+(r.filter===f[0]?" on":"")+'" data-act="res-filter" data-f="'+f[0]+'">'+f[1]+' ('+counts[f[0]]+')</button>'; });
+  h += '</div></div>';
+  var shown = 0;
+  e.order.forEach(function(id,k){
+    var ch = e.ans[id];
+    if(r.filter==="wrong" && ch===0) return;
+    if(r.filter==="flag" && !e.flags[id]) return;
+    if(r.filter==="skip" && ch!==undefined) return;
+    shown++; h += reviewItem(QB[id], ch, k+1);
+  });
+  if(!shown) h += '<p class="muted">Nothing to show here.</p>';
+  h += '</section><div class="row" style="margin-top:18px"><button class="btn primary" data-act="ex-start" data-n="'+e.n+'">Retake Mock Test '+e.n+'</button><button class="btn" data-act="tests-home">Back to mock tests</button></div>';
+  return h;
+}
+function reviewItem(q, ch, num){
+  var good = ch===0;
+  var h = '<div class="ritem"><div class="row">'+(num?'<span class="chip">Q'+num+'</span>':'')+'<span class="chip '+(good?"ok":"bad")+'">'+(good?"Correct":ch===undefined?"Unanswered":"Incorrect")+'</span><span class="muted small">'+esc(TNAME[q.t])+'</span></div>';
+  h += '<div class="q">'+esc(q.q)+'</div>';
+  if(!good && ch!==undefined) h += '<div class="ans-line wrongv"><span class="k">Your answer</span><span class="v">'+esc(q.o[ch])+'</span></div>';
+  h += '<div class="ans-line good"><span class="k">Correct</span><span class="v">'+esc(q.o[0])+'</span></div>';
+  h += '<div class="why">'+esc(q.e)+'</div></div>';
+  return h;
+}
+
+/* ================= RENDER ================= */
+function render(keepScroll){
+  var y = window.scrollY;
+  [].forEach.call(document.querySelectorAll(".tab"),function(b){ b.classList.toggle("on", b.getAttribute("data-tab")===S.tab); b.setAttribute("aria-selected", b.getAttribute("data-tab")===S.tab); });
+  var h;
+  if(S.tab==="review") h = S.rv ? rvQuestion() : rvHome();
+  else if(S.tab==="flash") h = fcView();
+  else h = S.res ? resultsView() : (S.ex && S.ex.active) ? examView() : testsHome();
+  view.innerHTML = h;
+  if(keepScroll) window.scrollTo(0,y); else window.scrollTo(0,0);
+}
+function go(tab){ S.tab = tab; store.set("tab",tab); render(); }
+
+document.addEventListener("click", function(ev){
+  var tb = ev.target.closest("[data-tab]");
+  if(tb){ go(tb.getAttribute("data-tab")); return; }
+  var b = ev.target.closest("[data-act]"); if(!b) return;
+  var a = b.getAttribute("data-act"), tp = b.getAttribute("data-topic");
+  if(b.tagName==="INPUT") return; // handled on change
+  switch(a){
+    // review
+    case "rv-start": rvStart(tp); render(); break;
+    case "rv-home": S.rv = null; render(); break;
+    case "rv-pick": if(S.rv.ans[S.rv.i]===undefined){ S.rv.ans[S.rv.i] = +b.getAttribute("data-o"); render(true); } break;
+    case "rv-next": if(S.rv.i < S.rv.list.length-1){ S.rv.i++; render(); } break;
+    case "rv-prev": if(S.rv.i>0){ S.rv.i--; render(); } break;
+    case "rv-finish": S.rv.done = true; render(); break;
+    // flashcards
+    case "fc-topic": fcBuild(tp); render(true); break;
+    case "fc-flip": S.fc.flip = !S.fc.flip; render(true); break;
+    case "fc-next": fcMove(1); break;
+    case "fc-prev": fcMove(-1); break;
+    case "fc-shuffle": S.fc.deck = shuffle(S.fc.deck); S.fc.i = 0; S.fc.flip = false; render(true); break;
+    case "fc-known": fcToggleKnown(); break;
+    case "fc-reset": var kn = store.get("fcKnown",[]).filter(function(i){ return !(S.fcTopic==="all"||FC[i].t===S.fcTopic); }); store.set("fcKnown",kn); fcBuild(S.fcTopic); render(true); break;
+    // tests
+    case "ex-start": exStart(+b.getAttribute("data-n"), store.get("timed",true)); S.ex.active = true; S.tab="tests"; render(); break;
+    case "ex-resume": S.ex.active = true; render(); break;
+    case "ex-discard": S.ex = null; exSave(); render(true); break;
+    case "ex-lastres": var lr = store.get("last"+b.getAttribute("data-n"),null); if(lr){ S.res = {e:lr.e, g:grade(lr.e), used:lr.used, filter:"wrong"}; render(); } break;
+    case "ex-pick": var id = S.ex.order[S.ex.i]; S.ex.ans[id] = +b.getAttribute("data-o"); exSave(); render(true); break;
+    case "ex-next": if(S.ex.i<99){ S.ex.i++; exSave(); render(); } break;
+    case "ex-prev": if(S.ex.i>0){ S.ex.i--; exSave(); render(); } break;
+    case "ex-go": S.ex.i = +b.getAttribute("data-i"); exSave(); render(true); break;
+    case "ex-nav": S.ex.nav = !S.ex.nav; render(true); break;
+    case "ex-flag": var fid = S.ex.order[S.ex.i]; S.ex.flags[fid] = !S.ex.flags[fid]; exSave(); render(true); break;
+    case "ex-submit": S.ex.confirm = true; render(); break;
+    case "ex-cancel": S.ex.confirm = false; render(); break;
+    case "ex-confirm": exSubmit(); render(); break;
+    case "res-filter": S.res.filter = b.getAttribute("data-f"); render(true); break;
+    case "tests-home": S.res = null; render(); break;
+    // cross-links
+    case "go-rv": S.tab="review"; store.set("tab","review"); rvStart(tp); render(); break;
+    case "go-fc": S.tab="flash"; store.set("tab","flash"); fcBuild(tp); render(); break;
+  }
+});
+document.addEventListener("change", function(ev){
+  var a = ev.target.getAttribute && ev.target.getAttribute("data-act");
+  if(a==="rv-inc"){ S.rvInc = ev.target.checked; store.set("rvInc",S.rvInc); render(true); }
+  if(a==="fc-hide"){ S.fcHide = ev.target.checked; fcBuild(S.fcTopic); render(true); }
+  if(a==="ex-timed"){ store.set("timed", ev.target.checked); }
+});
+function fcMove(d){ var f = S.fc, j = f.i+d; if(j<0||j>=f.deck.length) return; f.i = j; f.flip = false; render(true); }
+function fcToggleKnown(){
+  var ci = S.fc.deck[S.fc.i], kn = store.get("fcKnown",[]), k = kn.indexOf(ci);
+  if(k>=0) kn.splice(k,1); else kn.push(ci);
+  store.set("fcKnown",kn);
+  if(S.fcHide && k<0){ S.fc.deck.splice(S.fc.i,1); if(S.fc.i>=S.fc.deck.length) S.fc.i = Math.max(0,S.fc.deck.length-1); S.fc.flip=false; }
+  render(true);
+}
+
+/* keyboard */
+document.addEventListener("keydown", function(ev){
+  if(ev.metaKey||ev.ctrlKey||ev.altKey) return;
+  var tag = (ev.target.tagName||"").toLowerCase(); if(tag==="input"||tag==="textarea") return;
+  var k = ev.key, kl = k.toLowerCase(), idx = "abcd".indexOf(kl); if(idx<0) idx = "1234".indexOf(k);
+  if(S.tab==="flash" && S.fc && S.fc.deck.length){
+    if(k===" "||k==="Enter"){ ev.preventDefault(); S.fc.flip=!S.fc.flip; render(true); }
+    else if(k==="ArrowRight") fcMove(1); else if(k==="ArrowLeft") fcMove(-1);
+    else if(kl==="k") fcToggleKnown();
+    return;
+  }
+  var opts = view.querySelectorAll(".opt:not([disabled])");
+  if(idx>=0 && opts.length===4 && !(S.tab==="tests" && S.ex && S.ex.confirm)){ opts[idx].click(); return; }
+  if(S.tab==="review" && S.rv && !S.rv.done){
+    if(k==="ArrowRight"){ var nb = view.querySelector('[data-act="rv-next"]'); if(nb) nb.click(); }
+    if(k==="ArrowLeft"){ var pb = view.querySelector('[data-act="rv-prev"]:not([disabled])'); if(pb) pb.click(); }
+  }
+  if(S.tab==="tests" && S.ex && S.ex.active && !S.res){
+    if(k==="ArrowRight" && S.ex.i<99){ S.ex.i++; exSave(); render(); }
+    if(k==="ArrowLeft" && S.ex.i>0){ S.ex.i--; exSave(); render(); }
+    if(kl==="f"){ var fid = S.ex.order[S.ex.i]; S.ex.flags[fid]=!S.ex.flags[fid]; exSave(); render(true); }
+  }
+});
+
+/* timer: runs while a timed test is open on screen */
+var tick = 0;
+setInterval(function(){
+  var e = S.ex;
+  if(!e || !e.active || !e.timed || S.res) return;
+  e.remain--; tick++;
+  var t = document.getElementById("timer");
+  if(t){ t.textContent = fmtTime(e.remain); t.classList.toggle("low", e.remain<600); }
+  if(tick%10===0) exSave();
+  if(e.remain<=0){ exSubmit(); S.tab="tests"; render(); }
+}, 1000);
+window.addEventListener("beforeunload", function(){ if(S.ex){ var a = S.ex.active; S.ex.active = false; exSave(); S.ex.active = a; } });
+
+if(S.ex) S.ex.active = false; // show "Resume" on reload
+function setHH(){ document.documentElement.style.setProperty('--hh', document.querySelector('.top').offsetHeight+'px'); }
+setHH(); window.addEventListener('resize', setHH);
+render();
+})();
+
+</script>
+</body>
+</html>
